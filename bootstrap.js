@@ -55,7 +55,7 @@ if (typeof jQuery === 'undefined') {
     var called = false;
     var $el = this;
     $(this).one('bsTransitionEnd', function () { called = true });
-    var callback = function () { if (!called) $($el).trigger($.support.transition.end) };
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end); };
     setTimeout(callback, duration);
     return this;
   }
@@ -453,45 +453,45 @@ if (typeof jQuery === 'undefined') {
       relatedTarget: relatedTarget,
       direction: direction
     });
-    this.$element.trigger(slideEvent)
-    if (slideEvent.isDefaultPrevented()) return
+    this.$element.trigger(slideEvent);
+    if (slideEvent.isDefaultPrevented()) return;
 
-    this.sliding = true
+    this.sliding = true;
 
-    isCycling && this.pause()
+    isCycling && this.pause();
 
     if (this.$indicators.length) {
-      this.$indicators.find('.active').removeClass('active')
-      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
-      $nextIndicator && $nextIndicator.addClass('active')
+      this.$indicators.find('.active').removeClass('active');
+      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)]);
+      $nextIndicator && $nextIndicator.addClass('active');
     }
 
-    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
+    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }); // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
-      $next.addClass(type)
-      $next[0].offsetWidth // force reflow
-      $active.addClass(direction)
-      $next.addClass(direction)
+      $next.addClass(type);
+      $next[0].offsetWidth; // force reflow
+      $active.addClass(direction);
+      $next.addClass(direction);
       $active
         .one('bsTransitionEnd', function () {
-          $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
-          that.sliding = false
+          $next.removeClass([type, direction].join(' ')).addClass('active');
+          $active.removeClass(['active', direction].join(' '));
+          that.sliding = false;
           setTimeout(function () {
-            that.$element.trigger(slidEvent)
-          }, 0)
+            that.$element.trigger(slidEvent);
+          }, 0);
         })
-        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
+        .emulateTransitionEnd(Carousel.TRANSITION_DURATION);
     } else {
-      $active.removeClass('active')
-      $next.addClass('active')
-      this.sliding = false
-      this.$element.trigger(slidEvent)
+      $active.removeClass('active');
+      $next.addClass('active');
+      this.sliding = false;
+      this.$element.trigger(slidEvent);
     }
 
-    isCycling && this.cycle()
+    isCycling && this.cycle();
 
-    return this
+    return this;
   }
 }
 
@@ -501,24 +501,24 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
-      var action  = typeof option == 'string' ? option : options.slide
+      var $this   = $(this);
+      var data    = $this.data('bs.carousel');
+      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option);
+      var action  = typeof option == 'string' ? option : options.slide;
 
-      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'number') data.to(option)
-      else if (action) data[action]()
-      else if (options.interval) data.pause().cycle()
-    })
+      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)));
+      if (typeof option == 'number') data.to(option);
+      else if (action) data[action]();
+      else if (options.interval) data.pause().cycle();
+    });
   }
 }
 
 +function ($) {
-  var old = $.fn.carousel
+  var old = $.fn.carousel;
 
-  $.fn.carousel             = Plugin
-  $.fn.carousel.Constructor = Carousel
+  $.fn.carousel             = Plugin;
+  $.fn.carousel.Constructor = Carousel;
 }
 
   // CAROUSEL NO CONFLICT
@@ -526,8 +526,8 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   $.fn.carousel.noConflict = function () {
-    $.fn.carousel = old
-    return this
+    $.fn.carousel = old;
+    return this;
   }
 }
 
@@ -536,13 +536,13 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   var clickHandler = function (e) {
-    var href
-    var $this   = $(this)
-    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
-    if (!$target.hasClass('carousel')) return
-    var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
+    var href;
+    var $this   = $(this);
+    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')); // strip for ie7
+    if (!$target.hasClass('carousel')) return;
+    var options = $.extend({}, $target.data(), $this.data());
+    var slideIndex = $this.attr('data-slide-to');
+    if (slideIndex) options.interval = false;
 
     Plugin.call($target, options)
 
