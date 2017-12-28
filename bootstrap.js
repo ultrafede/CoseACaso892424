@@ -258,29 +258,29 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.button')
-      var options = typeof option == 'object' && option
+      var $this   = $(this);
+      var data    = $this.data('bs.button');
+      var options = typeof option == 'object' && option;
 
-      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+      if (!data) $this.data('bs.button', (data = new Button(this, options)));
 
-      if (option == 'toggle') data.toggle()
-      else if (option) data.setState(option)
+      if (option == 'toggle') data.toggle();
+      else if (option) data.setState(option);
     })
   }
 
-  var old = $.fn.button
+  var old = $.fn.button;
 
-  $.fn.button             = Plugin
-  $.fn.button.Constructor = Button
+  $.fn.button             = Plugin;
+  $.fn.button.Constructor = Button;
 }
 
   // BUTTON NO CONFLICT
   // ==================
 +function ($) {
   $.fn.button.noConflict = function () {
-    $.fn.button = old
-    return this
+    $.fn.button = old;
+    return this;
   }
 }
 
@@ -289,19 +289,19 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      var $btn = $(e.target).closest('.btn')
-      Plugin.call($btn, 'toggle')
+      var $btn = $(e.target).closest('.btn');
+      Plugin.call($btn, 'toggle');
       if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
-        e.preventDefault()
+        e.preventDefault();
         // The target component still receive the focus
-        if ($btn.is('input,button')) $btn.trigger('focus')
-        else $btn.find('input:visible,button:visible').first().trigger('focus')
+        if ($btn.is('input,button')) $btn.trigger('focus');
+        else $btn.find('input:visible,button:visible').first().trigger('focus');
       }
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
-    })
+      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type));
+    });
 
 }(jQuery);
 
@@ -321,34 +321,34 @@ if (typeof jQuery === 'undefined') {
   // =========================
 
   var Carousel = function (element, options) {
-    this.$element    = $(element)
-    this.$indicators = this.$element.find('.carousel-indicators')
-    this.options     = options
-    this.paused      = null
-    this.sliding     = null
-    this.interval    = null
-    this.$active     = null
-    this.$items      = null
+    this.$element    = $(element);
+    this.$indicators = this.$element.find('.carousel-indicators');
+    this.options     = options;
+    this.paused      = null;
+    this.sliding     = null;
+    this.interval    = null;
+    this.$active     = null;
+    this.$items      = null;
 
-    this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
+    this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this));
 
     this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
       .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
-      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
+      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this));
   }
 }
 
 +function ($) {
-  Carousel.VERSION  = '3.3.7'
+  Carousel.VERSION  = '3.3.7';
 
-  Carousel.TRANSITION_DURATION = 600
+  Carousel.TRANSITION_DURATION = 600;
 
   Carousel.DEFAULTS = {
     interval: 5000,
     pause: 'hover',
     wrap: true,
     keyboard: true
-  }
+  };
 }
 
 +function ($) {
