@@ -1096,33 +1096,33 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   Modal.prototype.hide = function (e) {
-    if (e) e.preventDefault()
+    if (e) e.preventDefault();
 
-    e = $.Event('hide.bs.modal')
+    e = $.Event('hide.bs.modal');
 
-    this.$element.trigger(e)
+    this.$element.trigger(e);
 
-    if (!this.isShown || e.isDefaultPrevented()) return
+    if (!this.isShown || e.isDefaultPrevented()) return;
 
-    this.isShown = false
+    this.isShown = false;
 
-    this.escape()
-    this.resize()
+    this.escape();
+    this.resize();
 
-    $(document).off('focusin.bs.modal')
+    $(document).off('focusin.bs.modal');
 
     this.$element
       .removeClass('in')
       .off('click.dismiss.bs.modal')
-      .off('mouseup.dismiss.bs.modal')
+      .off('mouseup.dismiss.bs.modal');
 
-    this.$dialog.off('mousedown.dismiss.bs.modal')
+    this.$dialog.off('mousedown.dismiss.bs.modal');
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
         .one('bsTransitionEnd', $.proxy(this.hideModal, this))
         .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
-      this.hideModal()
+      this.hideModal();
   }
 }
 
@@ -1134,9 +1134,9 @@ if (typeof jQuery === 'undefined') {
         if (document !== e.target &&
             this.$element[0] !== e.target &&
             !this.$element.has(e.target).length) {
-          this.$element.trigger('focus')
+          this.$element.trigger('focus');
         }
-      }, this))
+      }, this));
   }
 }
 
@@ -1144,7 +1144,7 @@ if (typeof jQuery === 'undefined') {
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
+        e.which == 27 && this.hide();
       }, this))
     } else if (!this.isShown) {
       this.$element.off('keydown.dismiss.bs.modal')
