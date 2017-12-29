@@ -880,40 +880,40 @@ if (typeof jQuery === 'undefined') {
         $(document.createElement('div'))
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
-          .on('click', clearMenus)
+          .on('click', clearMenus);
       }
 
-      var relatedTarget = { relatedTarget: this }
-      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+      var relatedTarget = { relatedTarget: this };
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget));
 
-      if (e.isDefaultPrevented()) return
+      if (e.isDefaultPrevented()) return;
 
       $this
         .trigger('focus')
-        .attr('aria-expanded', 'true')
+        .attr('aria-expanded', 'true');
 
       $parent
         .toggleClass('open')
-        .trigger($.Event('shown.bs.dropdown', relatedTarget))
+        .trigger($.Event('shown.bs.dropdown', relatedTarget));
     }
 
-    return false
+    return false;
   }
 }
 
 +function ($) {
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return;
 
-    var $this = $(this)
+    var $this = $(this);
 
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
 
-    if ($this.is('.disabled, :disabled')) return
+    if ($this.is('.disabled, :disabled')) return;
 
-    var $parent  = getParent($this)
-    var isActive = $parent.hasClass('open')
+    var $parent  = getParent($this);
+    var isActive = $parent.hasClass('open');
 
     if (!isActive && e.which != 27 || isActive && e.which == 27) {
       if (e.which == 27) $parent.find(toggle).trigger('focus')
