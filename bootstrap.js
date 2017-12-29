@@ -866,14 +866,14 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   Dropdown.prototype.toggle = function (e) {
-    var $this = $(this);
+    var $this = $(this)
 
-    if ($this.is('.disabled, :disabled')) return;
+    if ($this.is('.disabled, :disabled')) return
 
-    var $parent  = getParent($this);
-    var isActive = $parent.hasClass('open');
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
 
-    clearMenus();
+    clearMenus()
 
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
@@ -881,60 +881,60 @@ if (typeof jQuery === 'undefined') {
         $(document.createElement('div'))
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
-          .on('click', clearMenus);
+          .on('click', clearMenus)
       }
 
-      var relatedTarget = { relatedTarget: this };
-      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget));
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
 
-      if (e.isDefaultPrevented()) return;
+      if (e.isDefaultPrevented()) return
 
       $this
         .trigger('focus')
-        .attr('aria-expanded', 'true');
+        .attr('aria-expanded', 'true')
 
       $parent
         .toggleClass('open')
-        .trigger($.Event('shown.bs.dropdown', relatedTarget));
+        .trigger($.Event('shown.bs.dropdown', relatedTarget))
     }
 
-    return false;
+    return false
   }
 }
 
 +function ($) {
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return;
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
 
-    var $this = $(this);
+    var $this = $(this)
 
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault()
+    e.stopPropagation()
 
-    if ($this.is('.disabled, :disabled')) return;
+    if ($this.is('.disabled, :disabled')) return
 
-    var $parent  = getParent($this);
-    var isActive = $parent.hasClass('open');
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
 
     if (!isActive && e.which != 27 || isActive && e.which == 27) {
-      if (e.which == 27) $parent.find(toggle).trigger('focus');
-      return $this.trigger('click');
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
     }
 
-    var desc = ' li:not(.disabled):visible a';
-    var $items = $parent.find('.dropdown-menu' + desc);
+    var desc = ' li:not(.disabled):visible a'
+    var $items = $parent.find('.dropdown-menu' + desc)
 
-    if (!$items.length) return;
+    if (!$items.length) return
 
-    var index = $items.index(e.target);
+    var index = $items.index(e.target)
 
     if (e.which == 38 && index > 0){
     	index--;         // up
     }
-    if (e.which == 40 && index < $items.length - 1) index++;         // down
-    if (!~index)                                    index = 0;
+    if (e.which == 40 && index < $items.length - 1) index++         // down
+    if (!~index)                                    index = 0
 
-    $items.eq(index).trigger('focus');
+    $items.eq(index).trigger('focus')
   }
 }
 
@@ -943,20 +943,20 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this = $(this);
-      var data  = $this.data('bs.dropdown');
+      var $this = $(this)
+      var data  = $this.data('bs.dropdown')
 
-      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)));
-      if (typeof option == 'string') data[option].call($this);
-    });
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
   }
 }
 
 +function ($) {
-  var old = $.fn.dropdown;
+  var old = $.fn.dropdown
 
-  $.fn.dropdown             = Plugin;
-  $.fn.dropdown.Constructor = Dropdown;
+  $.fn.dropdown             = Plugin
+  $.fn.dropdown.Constructor = Dropdown
 }
 
   // DROPDOWN NO CONFLICT
@@ -964,8 +964,8 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   $.fn.dropdown.noConflict = function () {
-    $.fn.dropdown = old;
-    return this;
+    $.fn.dropdown = old
+    return this
   }
 }
 
@@ -975,10 +975,10 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() });
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
-    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown);
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
 
 }(jQuery);
 
@@ -998,46 +998,46 @@ if (typeof jQuery === 'undefined') {
   // ======================
 
   var Modal = function (element, options) {
-    this.options             = options;
-    this.$body               = $(document.body);
-    this.$element            = $(element);
-    this.$dialog             = this.$element.find('.modal-dialog');
-    this.$backdrop           = null;
-    this.isShown             = null;
-    this.originalBodyPad     = null;
-    this.scrollbarWidth      = 0;
-    this.ignoreBackdropClick = false;
+    this.options             = options
+    this.$body               = $(document.body)
+    this.$element            = $(element)
+    this.$dialog             = this.$element.find('.modal-dialog')
+    this.$backdrop           = null
+    this.isShown             = null
+    this.originalBodyPad     = null
+    this.scrollbarWidth      = 0
+    this.ignoreBackdropClick = false
 
     if (this.options.remote) {
       this.$element
         .find('.modal-content')
         .load(this.options.remote, $.proxy(function () {
-          this.$element.trigger('loaded.bs.modal');
-        }, this));
+          this.$element.trigger('loaded.bs.modal')
+        }, this))
     }
   }
 }
 
 +function ($) {
-  Modal.VERSION  = '3.3.7';
+  Modal.VERSION  = '3.3.7'
 
-  Modal.TRANSITION_DURATION = 300;
-  Modal.BACKDROP_TRANSITION_DURATION = 150;
+  Modal.TRANSITION_DURATION = 300
+  Modal.BACKDROP_TRANSITION_DURATION = 150
 
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
     show: true
-  };
+  }
 
   Modal.prototype.toggle = function (_relatedTarget) {
-    return this.isShown ? this.hide() : this.show(_relatedTarget);
+    return this.isShown ? this.hide() : this.show(_relatedTarget)
   }
 }
 
 +function ($) {
   Modal.prototype.show = function (_relatedTarget) {
-    var that = this;
+    var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
     this.$element.trigger(e)
