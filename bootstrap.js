@@ -952,10 +952,10 @@ if (typeof jQuery === 'undefined') {
 }
 
 +function ($) {
-  var old = $.fn.dropdown
+  var old = $.fn.dropdown;
 
-  $.fn.dropdown             = Plugin
-  $.fn.dropdown.Constructor = Dropdown
+  $.fn.dropdown             = Plugin;
+  $.fn.dropdown.Constructor = Dropdown;
 }
 
   // DROPDOWN NO CONFLICT
@@ -963,8 +963,8 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   $.fn.dropdown.noConflict = function () {
-    $.fn.dropdown = old
-    return this
+    $.fn.dropdown = old;
+    return this;
   }
 }
 
@@ -974,10 +974,10 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() };)
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
-    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown);
 
 }(jQuery);
 
@@ -997,15 +997,15 @@ if (typeof jQuery === 'undefined') {
   // ======================
 
   var Modal = function (element, options) {
-    this.options             = options
-    this.$body               = $(document.body)
-    this.$element            = $(element)
-    this.$dialog             = this.$element.find('.modal-dialog')
-    this.$backdrop           = null
-    this.isShown             = null
-    this.originalBodyPad     = null
-    this.scrollbarWidth      = 0
-    this.ignoreBackdropClick = false
+    this.options             = options;
+    this.$body               = $(document.body);
+    this.$element            = $(element);
+    this.$dialog             = this.$element.find('.modal-dialog');
+    this.$backdrop           = null;
+    this.isShown             = null;
+    this.originalBodyPad     = null;
+    this.scrollbarWidth      = 0;
+    this.ignoreBackdropClick = false;
 
     if (this.options.remote) {
       this.$element
