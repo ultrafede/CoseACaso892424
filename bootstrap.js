@@ -1344,8 +1344,8 @@ if (typeof jQuery === 'undefined') {
         $this.is(':visible') && $this.trigger('focus');
       });
     });
-    Plugin.call($target, option, this)
-  })
+    Plugin.call($target, option, this);
+  });
 
 }(jQuery);
 
@@ -1366,20 +1366,20 @@ if (typeof jQuery === 'undefined') {
   // ===============================
 
   var Tooltip = function (element, options) {
-    this.type       = null
-    this.options    = null
-    this.enabled    = null
-    this.timeout    = null
-    this.hoverState = null
-    this.$element   = null
-    this.inState    = null
+    this.type       = null;
+    this.options    = null;
+    this.enabled    = null;
+    this.timeout    = null;
+    this.hoverState = null;
+    this.$element   = null;
+    this.inState    = null;
 
-    this.init('tooltip', element, options)
+    this.init('tooltip', element, options);
   }
 
-  Tooltip.VERSION  = '3.3.7'
+  Tooltip.VERSION  = '3.3.7';
 
-  Tooltip.TRANSITION_DURATION = 150
+  Tooltip.TRANSITION_DURATION = 150;
 
   Tooltip.DEFAULTS = {
     animation: true,
@@ -1395,51 +1395,51 @@ if (typeof jQuery === 'undefined') {
       selector: 'body',
       padding: 0
     }
-  }
+  };
 }
 
 +function ($) {
   Tooltip.prototype.init = function (type, element, options) {
-    this.enabled   = true
-    this.type      = type
-    this.$element  = $(element)
-    this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
-    this.inState   = { click: false, hover: false, focus: false }
+    this.enabled   = true;
+    this.type      = type;
+    this.$element  = $(element);
+    this.options   = this.getOptions(options);
+    this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport));
+    this.inState   = { click: false, hover: false, focus: false };
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
       throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
     }
 
-    var triggers = this.options.trigger.split(' ')
+    var triggers = this.options.trigger.split(' ');
 
     for (var i = triggers.length; i--;) {
-      var trigger = triggers[i]
+      var trigger = triggers[i];
 
       if (trigger == 'click') {
-        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this));
       } else if (trigger != 'manual') {
-        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
-        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin';
+        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout';
 
-        this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this));
+        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this));
       }
     }
 
     this.options.selector ?
       (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
-      this.fixTitle()
+      this.fixTitle();
   }
 }
 
 +function ($) {
   Tooltip.prototype.getDefaults = function () {
-    return Tooltip.DEFAULTS
+    return Tooltip.DEFAULTS;
   }
 
   Tooltip.prototype.getOptions = function (options) {
-    options = $.extend({}, this.getDefaults(), this.$element.data(), options)
+    options = $.extend({}, this.getDefaults(), this.$element.data(), options);
 
     if (options.delay && typeof options.delay == 'number') {
       options.delay = {
