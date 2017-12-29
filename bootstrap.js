@@ -916,24 +916,24 @@ if (typeof jQuery === 'undefined') {
     var isActive = $parent.hasClass('open');
 
     if (!isActive && e.which != 27 || isActive && e.which == 27) {
-      if (e.which == 27) $parent.find(toggle).trigger('focus')
-      return $this.trigger('click')
+      if (e.which == 27) $parent.find(toggle).trigger('focus');
+      return $this.trigger('click');
     }
 
-    var desc = ' li:not(.disabled):visible a'
-    var $items = $parent.find('.dropdown-menu' + desc)
+    var desc = ' li:not(.disabled):visible a';
+    var $items = $parent.find('.dropdown-menu' + desc);
 
-    if (!$items.length) return
+    if (!$items.length) return;
 
-    var index = $items.index(e.target)
+    var index = $items.index(e.target);
 
     if (e.which == 38 && index > 0){
     	index--;         // up
     }
-    if (e.which == 40 && index < $items.length - 1) index++         // down
-    if (!~index)                                    index = 0
+    if (e.which == 40 && index < $items.length - 1) index++;        // down
+    if (!~index)                                    index = 0;
 
-    $items.eq(index).trigger('focus')
+    $items.eq(index).trigger('focus');
   }
 }
 
@@ -942,12 +942,12 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this = $(this)
-      var data  = $this.data('bs.dropdown')
+      var $this = $(this);
+      var data  = $this.data('bs.dropdown');
 
-      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data[option].call($this)
-    })
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)));
+      if (typeof option == 'string') data[option].call($this);
+    });
   }
 }
 
