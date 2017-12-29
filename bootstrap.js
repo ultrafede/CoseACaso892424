@@ -1445,55 +1445,55 @@ if (typeof jQuery === 'undefined') {
       options.delay = {
         show: options.delay,
         hide: options.delay
-      }
+      };
     }
 
-    return options
+    return options;
   }
 }
 
 +function ($) {
 
   Tooltip.prototype.getDelegateOptions = function () {
-    var options  = {}
-    var defaults = this.getDefaults()
+    var options  = {};
+    var defaults = this.getDefaults();
 
     this._options && $.each(this._options, function (key, value) {
-      if (defaults[key] != value) options[key] = value
-    })
+      if (defaults[key] != value) options[key] = value;
+    });
 
-    return options
+    return options;
   }
 }
 
 +function ($) {
   Tooltip.prototype.enter = function (obj) {
     var self = obj instanceof this.constructor ?
-      obj : $(obj.currentTarget).data('bs.' + this.type)
+      obj : $(obj.currentTarget).data('bs.' + this.type);
 
     if (!self) {
-      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
-      $(obj.currentTarget).data('bs.' + this.type, self)
+      self = new this.constructor(obj.currentTarget, this.getDelegateOptions());
+      $(obj.currentTarget).data('bs.' + this.type, self);
     }
 
     if (obj instanceof $.Event) {
-      self.inState[obj.type == 'focusin' ? 'focus' : 'hover'] = true
+      self.inState[obj.type == 'focusin' ? 'focus' : 'hover'] = true;
     }
 
     if (self.tip().hasClass('in') || self.hoverState == 'in') {
-      self.hoverState = 'in'
-      return
+      self.hoverState = 'in';
+      return;
     }
 
-    clearTimeout(self.timeout)
+    clearTimeout(self.timeout);
 
-    self.hoverState = 'in'
+    self.hoverState = 'in';
 
-    if (!self.options.delay || !self.options.delay.show) return self.show()
+    if (!self.options.delay || !self.options.delay.show) return self.show();
 
     self.timeout = setTimeout(function () {
-      if (self.hoverState == 'in') self.show()
-    }, self.options.delay.show)
+      if (self.hoverState == 'in') self.show();
+    }, self.options.delay.show);
   }
 }
 
@@ -1501,51 +1501,51 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   Tooltip.prototype.isInStateTrue = function () {
     for (var key in this.inState) {
-      if (this.inState[key]) return true
+      if (this.inState[key]) return true;
     }
 
-    return false
+    return false;
   }
 }
 
 +function ($) {
   Tooltip.prototype.leave = function (obj) {
     var self = obj instanceof this.constructor ?
-      obj : $(obj.currentTarget).data('bs.' + this.type)
+      obj : $(obj.currentTarget).data('bs.' + this.type);
 
     if (!self) {
-      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
-      $(obj.currentTarget).data('bs.' + this.type, self)
+      self = new this.constructor(obj.currentTarget, this.getDelegateOptions());
+      $(obj.currentTarget).data('bs.' + this.type, self);
     }
 
     if (obj instanceof $.Event) {
-      self.inState[obj.type == 'focusout' ? 'focus' : 'hover'] = false
+      self.inState[obj.type == 'focusout' ? 'focus' : 'hover'] = false;
     }
 
-    if (self.isInStateTrue()) return
+    if (self.isInStateTrue()) return;
 
-    clearTimeout(self.timeout)
+    clearTimeout(self.timeout);
 
-    self.hoverState = 'out'
+    self.hoverState = 'out';
 
-    if (!self.options.delay || !self.options.delay.hide) return self.hide()
+    if (!self.options.delay || !self.options.delay.hide) return self.hide();
 
     self.timeout = setTimeout(function () {
-      if (self.hoverState == 'out') self.hide()
-    }, self.options.delay.hide)
+      if (self.hoverState == 'out') self.hide();
+    }, self.options.delay.hide);
   }
 }
 
 
 +function ($) {
   Tooltip.prototype.show = function () {
-    var e = $.Event('show.bs.' + this.type)
+    var e = $.Event('show.bs.' + this.type);
 
     if (this.hasContent() && this.enabled) {
-      this.$element.trigger(e)
+      this.$element.trigger(e);
 
-      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0])
-      if (e.isDefaultPrevented() || !inDom) return
+      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0]);
+      if (e.isDefaultPrevented() || !inDom) return;
       var that = this
 
       var $tip = this.tip()
