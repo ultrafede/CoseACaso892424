@@ -550,7 +550,7 @@ if (typeof jQuery === 'undefined') {
       $target.data('bs.carousel').to(slideIndex);
     }
 
-    e.preventDefault()
+    e.preventDefault();
   }
 }
 
@@ -686,34 +686,34 @@ if (typeof jQuery === 'undefined') {
     this.$element
       .addClass('collapsing')
       .removeClass('collapse in')
-      .attr('aria-expanded', false)
+      .attr('aria-expanded', false);
 
     this.$trigger
       .addClass('collapsed')
-      .attr('aria-expanded', false)
+      .attr('aria-expanded', false);
 
-    this.transitioning = 1
+    this.transitioning = 1;
 
     var complete = function () {
-      this.transitioning = 0
+      this.transitioning = 0;
       this.$element
         .removeClass('collapsing')
         .addClass('collapse')
-        .trigger('hidden.bs.collapse')
+        .trigger('hidden.bs.collapse');
     }
 
-    if (!$.support.transition) return complete.call(this)
+    if (!$.support.transition) return complete.call(this);
 
     this.$element
       [dimension](0)
       .one('bsTransitionEnd', $.proxy(complete, this))
-      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION);
   }
 }
 
 +function ($) {
   Collapse.prototype.toggle = function () {
-    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+    this[this.$element.hasClass('in') ? 'hide' : 'show']();
   }
 }
 
@@ -722,31 +722,31 @@ if (typeof jQuery === 'undefined') {
     return $(this.options.parent)
       .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
       .each($.proxy(function (i, element) {
-        var $element = $(element)
-        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+        var $element = $(element);
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element);
       }, this))
-      .end()
+      .end();
   }
 }
 
 +function ($) {
   Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
-    var isOpen = $element.hasClass('in')
+    var isOpen = $element.hasClass('in');
 
-    $element.attr('aria-expanded', isOpen)
+    $element.attr('aria-expanded', isOpen);
     $trigger
       .toggleClass('collapsed', !isOpen)
-      .attr('aria-expanded', isOpen)
+      .attr('aria-expanded', isOpen);
   }
 }
 
 +function ($) {
   function getTargetFromTrigger($trigger) {
-    var href
+    var href;
     var target = $trigger.attr('data-target')
-      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, ''); // strip for ie7
 
-    return $(target)
+    return $(target);
   }
 }
 
@@ -756,22 +756,22 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.collapse')
-      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var $this   = $(this);
+      var data    = $this.data('bs.collapse');
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option);
 
-      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
-      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false;
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)));
+      if (typeof option == 'string') data[option]();
+    });
   }
 }
 
 +function ($) {
-  var old = $.fn.collapse
+  var old = $.fn.collapse;
 
-  $.fn.collapse             = Plugin
-  $.fn.collapse.Constructor = Collapse
+  $.fn.collapse             = Plugin;
+  $.fn.collapse.Constructor = Collapse;
 }
 
   // COLLAPSE NO CONFLICT
@@ -779,8 +779,8 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   $.fn.collapse.noConflict = function () {
-    $.fn.collapse = old
-    return this
+    $.fn.collapse = old;
+    return this;
   }
 }
 
@@ -789,16 +789,16 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
-    var $this   = $(this)
+    var $this   = $(this);
 
-    if (!$this.attr('data-target')) e.preventDefault()
+    if (!$this.attr('data-target')) e.preventDefault();
 
-    var $target = getTargetFromTrigger($this)
-    var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $this.data()
+    var $target = getTargetFromTrigger($this);
+    var data    = $target.data('bs.collapse');
+    var option  = data ? 'toggle' : $this.data();
 
-    Plugin.call($target, option)
-  })
+    Plugin.call($target, option);
+  });
 
 }(jQuery);
 
@@ -817,50 +817,50 @@ if (typeof jQuery === 'undefined') {
   // DROPDOWN CLASS DEFINITION
   // =========================
 
-  var backdrop = '.dropdown-backdrop'
-  var toggle   = '[data-toggle="dropdown"]'
+  var backdrop = '.dropdown-backdrop';
+  var toggle   = '[data-toggle="dropdown"]';
   var Dropdown = function (element) {
-    $(element).on('click.bs.dropdown', this.toggle)
+    $(element).on('click.bs.dropdown', this.toggle);
   }
 
-  Dropdown.VERSION = '3.3.7'
+  Dropdown.VERSION = '3.3.7';
 }
 
 +function ($) {
   function getParent($this) {
-    var selector = $this.attr('data-target')
+    var selector = $this.attr('data-target');
 
     if (!selector) {
-      selector = $this.attr('href')
-      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+      selector = $this.attr('href');
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, ''); // strip for ie7
     }
 
-    var $parent = selector && $(selector)
+    var $parent = selector && $(selector);
 
-    return $parent && $parent.length ? $parent : $this.parent()
+    return $parent && $parent.length ? $parent : $this.parent();
   }
 }
 
 +function ($) {
   function clearMenus(e) {
-    if (e && e.which === 3) return
-    $(backdrop).remove()
+    if (e && e.which === 3) return;
+    $(backdrop).remove();
     $(toggle).each(function () {
-      var $this         = $(this)
-      var $parent       = getParent($this)
-      var relatedTarget = { relatedTarget: this }
+      var $this         = $(this);
+      var $parent       = getParent($this);
+      var relatedTarget = { relatedTarget: this };
 
-      if (!$parent.hasClass('open')) return
+      if (!$parent.hasClass('open')) return;
 
-      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return;
 
-      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget));
 
-      if (e.isDefaultPrevented()) return
+      if (e.isDefaultPrevented()) return;
 
-      $this.attr('aria-expanded', 'false')
-      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
-    })
+      $this.attr('aria-expanded', 'false');
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget));
+    });
   }
 }
 
