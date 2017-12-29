@@ -865,14 +865,14 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   Dropdown.prototype.toggle = function (e) {
-    var $this = $(this)
+    var $this = $(this);
 
-    if ($this.is('.disabled, :disabled')) return
+    if ($this.is('.disabled, :disabled')) return;
 
-    var $parent  = getParent($this)
-    var isActive = $parent.hasClass('open')
+    var $parent  = getParent($this);
+    var isActive = $parent.hasClass('open');
 
-    clearMenus()
+    clearMenus();
 
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
