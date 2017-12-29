@@ -1011,52 +1011,52 @@ if (typeof jQuery === 'undefined') {
       this.$element
         .find('.modal-content')
         .load(this.options.remote, $.proxy(function () {
-          this.$element.trigger('loaded.bs.modal')
-        }, this))
+          this.$element.trigger('loaded.bs.modal');
+        }, this));
     }
   }
 }
 
 +function ($) {
-  Modal.VERSION  = '3.3.7'
+  Modal.VERSION  = '3.3.7';
 
-  Modal.TRANSITION_DURATION = 300
-  Modal.BACKDROP_TRANSITION_DURATION = 150
+  Modal.TRANSITION_DURATION = 300;
+  Modal.BACKDROP_TRANSITION_DURATION = 150;
 
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
     show: true
-  }
+  };
 
   Modal.prototype.toggle = function (_relatedTarget) {
-    return this.isShown ? this.hide() : this.show(_relatedTarget)
+    return this.isShown ? this.hide() : this.show(_relatedTarget);
   }
 }
 
 +function ($) {
   Modal.prototype.show = function (_relatedTarget) {
-    var that = this
-    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+    var that = this;
+    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget });
 
-    this.$element.trigger(e)
+    this.$element.trigger(e);
 
-    if (this.isShown || e.isDefaultPrevented()) return
+    if (this.isShown || e.isDefaultPrevented()) return;
 
-    this.isShown = true
+    this.isShown = true;
 
-    this.checkScrollbar()
-    this.setScrollbar()
-    this.$body.addClass('modal-open')
+    this.checkScrollbar();
+    this.setScrollbar();
+    this.$body.addClass('modal-open');
 
-    this.escape()
-    this.resize()
+    this.escape();
+    this.resize();
 
-    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this));
 
     this.$dialog.on('mousedown.dismiss.bs.modal', function () {
       that.$element.one('mouseup.dismiss.bs.modal', function (e) {
-        if ($(e.target).is(that.$element)) that.ignoreBackdropClick = true
+        if ($(e.target).is(that.$element)) that.ignoreBackdropClick = true;
       })
     })
 
