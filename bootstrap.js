@@ -1145,9 +1145,9 @@ if (typeof jQuery === 'undefined') {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
         e.which == 27 && this.hide();
-      }, this))
+      }, this));
     } else if (!this.isShown) {
-      this.$element.off('keydown.dismiss.bs.modal')
+      this.$element.off('keydown.dismiss.bs.modal');
     }
   }
 }
@@ -1155,55 +1155,55 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   Modal.prototype.resize = function () {
     if (this.isShown) {
-      $(window).on('resize.bs.modal', $.proxy(this.handleUpdate, this))
+      $(window).on('resize.bs.modal', $.proxy(this.handleUpdate, this));
     } else {
-      $(window).off('resize.bs.modal')
+      $(window).off('resize.bs.modal');
     }
   }
 }
 
 +function ($) {
   Modal.prototype.hideModal = function () {
-    var that = this
-    this.$element.hide()
+    var that = this;
+    this.$element.hide();
     this.backdrop(function () {
-      that.$body.removeClass('modal-open')
-      that.resetAdjustments()
-      that.resetScrollbar()
-      that.$element.trigger('hidden.bs.modal')
-    })
+      that.$body.removeClass('modal-open');
+      that.resetAdjustments();
+      that.resetScrollbar();
+      that.$element.trigger('hidden.bs.modal');
+    });
   }
 }
 
 +function ($) {
   Modal.prototype.removeBackdrop = function () {
-    this.$backdrop && this.$backdrop.remove()
-    this.$backdrop = null
+    this.$backdrop && this.$backdrop.remove();
+    this.$backdrop = null;
   }
 }
 
 +function ($) {
   Modal.prototype.backdrop = function (callback) {
-    var that = this
-    var animate = this.$element.hasClass('fade') ? 'fade' : ''
+    var that = this;
+    var animate = this.$element.hasClass('fade') ? 'fade' : '';
 
     if (this.isShown && this.options.backdrop) {
-      var doAnimate = $.support.transition && animate
+      var doAnimate = $.support.transition && animate;
 
       this.$backdrop = $(document.createElement('div'))
         .addClass('modal-backdrop ' + animate)
-        .appendTo(this.$body)
+        .appendTo(this.$body);
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
         if (this.ignoreBackdropClick) {
-          this.ignoreBackdropClick = false
-          return
+          this.ignoreBackdropClick = false;
+          return;
         }
-        if (e.target !== e.currentTarget) return
+        if (e.target !== e.currentTarget) return;
         this.options.backdrop == 'static'
           ? this.$element[0].focus()
-          : this.hide()
-      }, this))
+          : this.hide();
+      }, this));
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
