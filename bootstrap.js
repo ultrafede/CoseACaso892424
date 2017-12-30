@@ -2099,30 +2099,30 @@ if (typeof jQuery === 'undefined') {
           && $href.is(':visible')
           && [[$href[offsetMethod]().top + offsetBase, href]]) || null;
       })
-      .sort(function (a, b) { return a[0] - b[0] })
+      .sort(function (a, b) { return a[0] - b[0]; })
       .each(function () {
-        that.offsets.push(this[0])
-        that.targets.push(this[1])
-      })
+        that.offsets.push(this[0]);
+        that.targets.push(this[1]);
+      });
   }
 }
 
 +function ($) {
   ScrollSpy.prototype.process = function () {
-    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
-    var scrollHeight = this.getScrollHeight()
-    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
-    var offsets      = this.offsets
-    var targets      = this.targets
-    var activeTarget = this.activeTarget
-    var i
+    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset;
+    var scrollHeight = this.getScrollHeight();
+    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height();
+    var offsets      = this.offsets;
+    var targets      = this.targets;
+    var activeTarget = this.activeTarget;
+    var i;
 
     if (this.scrollHeight != scrollHeight) {
-      this.refresh()
+      this.refresh();
     }
 
     if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
     }
 
     if (activeTarget && scrollTop < offsets[0]) {
