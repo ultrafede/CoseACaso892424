@@ -2469,28 +2469,28 @@ if (typeof jQuery === 'undefined') {
     var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
     if (this.affixed != affix) {
-      if (this.unpin != null) this.$element.css('top', '')
+      if (this.unpin != null) this.$element.css('top', '');
 
-      var affixType = 'affix' + (affix ? '-' + affix : '')
-      var e         = $.Event(affixType + '.bs.affix')
+      var affixType = 'affix' + (affix ? '-' + affix : '');
+      var e         = $.Event(affixType + '.bs.affix');
 
-      this.$element.trigger(e)
+      this.$element.trigger(e);
 
-      if (e.isDefaultPrevented()) return
+      if (e.isDefaultPrevented()) return;
 
-      this.affixed = affix
-      this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null
+      this.affixed = affix;
+      this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null;
 
       this.$element
         .removeClass(Affix.RESET)
         .addClass(affixType)
-        .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
+        .trigger(affixType.replace('affix', 'affixed') + '.bs.affix');
     }
 
     if (affix == 'bottom') {
       this.$element.offset({
         top: scrollHeight - height - offsetBottom
-      })
+      });
     }
   }
 }
@@ -2501,27 +2501,27 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.affix')
-      var options = typeof option == 'object' && option
+      var $this   = $(this);
+      var data    = $this.data('bs.affix');
+      var options = typeof option == 'object' && option;
 
-      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
+      if (!data) $this.data('bs.affix', (data = new Affix(this, options)));
+      if (typeof option == 'string') data[option]();
+    });
   }
 
-  var old = $.fn.affix
+  var old = $.fn.affix;
 
-  $.fn.affix             = Plugin
-  $.fn.affix.Constructor = Affix
+  $.fn.affix             = Plugin;
+  $.fn.affix.Constructor = Affix;
 
 
   // AFFIX NO CONFLICT
   // =================
 
   $.fn.affix.noConflict = function () {
-    $.fn.affix = old
-    return this
+    $.fn.affix = old;
+    return this;
   }
 }
 
@@ -2531,16 +2531,16 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   $(window).on('load', function () {
     $('[data-spy="affix"]').each(function () {
-      var $spy = $(this)
-      var data = $spy.data()
+      var $spy = $(this);
+      var data = $spy.data();
 
-      data.offset = data.offset || {}
+      data.offset = data.offset || {};
 
-      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
-      if (data.offsetTop    != null) data.offset.top    = data.offsetTop
+      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom;
+      if (data.offsetTop    != null) data.offset.top    = data.offsetTop;
 
-      Plugin.call($spy, data)
-    })
-  })
+      Plugin.call($spy, data);
+    });
+  });
 
 }(jQuery);
