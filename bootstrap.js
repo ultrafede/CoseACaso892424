@@ -1950,51 +1950,51 @@ if (typeof jQuery === 'undefined') {
   // ================================
 
 +function ($) {
-  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype);
+  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
 
-  Popover.prototype.constructor = Popover;
+  Popover.prototype.constructor = Popover
 
   Popover.prototype.getDefaults = function () {
-    return Popover.DEFAULTS;
+    return Popover.DEFAULTS
   }
 }
 
 +function ($) {
   Popover.prototype.setContent = function () {
-    var $tip    = this.tip();
-    var title   = this.getTitle();
-    var content = this.getContent();
+    var $tip    = this.tip()
+    var title   = this.getTitle()
+    var content = this.getContent()
 
-    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title);
+    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
     $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
-    ](content);
+    ](content)
 
-    $tip.removeClass('fade top bottom left right in');
+    $tip.removeClass('fade top bottom left right in')
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide();
+    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
   }
 }
 
 +function ($) {
   Popover.prototype.hasContent = function () {
-    return this.getTitle() || this.getContent();
+    return this.getTitle() || this.getContent()
   }
 
   Popover.prototype.getContent = function () {
-    var $e = this.$element;
-    var o  = this.options;
+    var $e = this.$element
+    var o  = this.options
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
             o.content.call($e[0]) :
-            o.content);
+            o.content)
   }
 
   Popover.prototype.arrow = function () {
-    return (this.$arrow = this.$arrow || this.tip().find('.arrow'));
+    return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
   }
 }
 
@@ -2005,28 +2005,28 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this);
-      var data    = $this.data('bs.popover');
-      var options = typeof option == 'object' && option;
+      var $this   = $(this)
+      var data    = $this.data('bs.popover')
+      var options = typeof option == 'object' && option
 
-      if (!data && /destroy|hide/.test(option)) return;
-      if (!data) $this.data('bs.popover', (data = new Popover(this, options)));
-      if (typeof option == 'string') data[option]();
-    });
+      if (!data && /destroy|hide/.test(option)) return
+      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
   }
 
-  var old = $.fn.popover;
+  var old = $.fn.popover
 
-  $.fn.popover             = Plugin;
-  $.fn.popover.Constructor = Popover;
+  $.fn.popover             = Plugin
+  $.fn.popover.Constructor = Popover
 
 
   // POPOVER NO CONFLICT
   // ===================
 
   $.fn.popover.noConflict = function () {
-    $.fn.popover = old;
-    return this;
+    $.fn.popover = old
+    return this
   }
 
 }(jQuery);
@@ -2047,78 +2047,78 @@ if (typeof jQuery === 'undefined') {
   // ==========================
 
   function ScrollSpy(element, options) {
-    this.$body          = $(document.body);
-    this.$scrollElement = $(element).is(document.body) ? $(window) : $(element);
-    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options);
-    this.selector       = (this.options.target || '') + ' .nav li > a';
-    this.offsets        = [];
-    this.targets        = [];
-    this.activeTarget   = null;
-    this.scrollHeight   = 0;
+    this.$body          = $(document.body)
+    this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+    this.selector       = (this.options.target || '') + ' .nav li > a'
+    this.offsets        = []
+    this.targets        = []
+    this.activeTarget   = null
+    this.scrollHeight   = 0
 
-    this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this));
-    this.refresh();
-    this.process();
+    this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+    this.refresh()
+    this.process()
   }
 
-  ScrollSpy.VERSION  = '3.3.7';
+  ScrollSpy.VERSION  = '3.3.7'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
-  };
+  }
 
   ScrollSpy.prototype.getScrollHeight = function () {
-    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight);
+    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
   }
 }
 
 +function ($) {
   ScrollSpy.prototype.refresh = function () {
-    var that          = this;
-    var offsetMethod  = 'offset';
-    var offsetBase    = 0;
+    var that          = this
+    var offsetMethod  = 'offset'
+    var offsetBase    = 0
 
-    this.offsets      = [];
-    this.targets      = [];
-    this.scrollHeight = this.getScrollHeight();
+    this.offsets      = []
+    this.targets      = []
+    this.scrollHeight = this.getScrollHeight()
 
     if (!$.isWindow(this.$scrollElement[0])) {
-      offsetMethod = 'position';
-      offsetBase   = this.$scrollElement.scrollTop();
+      offsetMethod = 'position'
+      offsetBase   = this.$scrollElement.scrollTop()
     }
 
     this.$body
       .find(this.selector)
       .map(function () {
-        var $el   = $(this);
-        var href  = $el.data('target') || $el.attr('href');
-        var $href = /^#./.test(href) && $(href);
+        var $el   = $(this)
+        var href  = $el.data('target') || $el.attr('href')
+        var $href = /^#./.test(href) && $(href)
 
         return ($href
           && $href.length
           && $href.is(':visible')
-          && [[$href[offsetMethod]().top + offsetBase, href]]) || null;
+          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
       })
-      .sort(function (a, b) { return a[0] - b[0] });
+      .sort(function (a, b) { return a[0] - b[0] })
       .each(function () {
-        that.offsets.push(this[0]);
-        that.targets.push(this[1]);
-      });
+        that.offsets.push(this[0])
+        that.targets.push(this[1])
+      })
   }
 }
 
 +function ($) {
   ScrollSpy.prototype.process = function () {
-    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset;
-    var scrollHeight = this.getScrollHeight();
-    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height();
-    var offsets      = this.offsets;
-    var targets      = this.targets;
-    var activeTarget = this.activeTarget;
-    var i;
+    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+    var scrollHeight = this.getScrollHeight()
+    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+    var offsets      = this.offsets
+    var targets      = this.targets
+    var activeTarget = this.activeTarget
+    var i
 
     if (this.scrollHeight != scrollHeight) {
-      this.refresh();
+      this.refresh()
     }
 
     if (scrollTop >= maxScroll) {
