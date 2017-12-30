@@ -2010,23 +2010,23 @@ if (typeof jQuery === 'undefined') {
       var options = typeof option == 'object' && option;
 
       if (!data && /destroy|hide/.test(option)) return;
-      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
+      if (!data) $this.data('bs.popover', (data = new Popover(this, options)));
+      if (typeof option == 'string') data[option]();
+    });
   }
 
-  var old = $.fn.popover
+  var old = $.fn.popover;
 
-  $.fn.popover             = Plugin
-  $.fn.popover.Constructor = Popover
+  $.fn.popover             = Plugin;
+  $.fn.popover.Constructor = Popover;
 
 
   // POPOVER NO CONFLICT
   // ===================
 
   $.fn.popover.noConflict = function () {
-    $.fn.popover = old
-    return this
+    $.fn.popover = old;
+    return this;
   }
 
 }(jQuery);
@@ -2047,21 +2047,21 @@ if (typeof jQuery === 'undefined') {
   // ==========================
 
   function ScrollSpy(element, options) {
-    this.$body          = $(document.body)
-    this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
-    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-    this.selector       = (this.options.target || '') + ' .nav li > a'
-    this.offsets        = []
-    this.targets        = []
-    this.activeTarget   = null
-    this.scrollHeight   = 0
+    this.$body          = $(document.body);
+    this.$scrollElement = $(element).is(document.body) ? $(window) : $(element);
+    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options);
+    this.selector       = (this.options.target || '') + ' .nav li > a';
+    this.offsets        = [];
+    this.targets        = [];
+    this.activeTarget   = null;
+    this.scrollHeight   = 0;
 
-    this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
-    this.refresh()
-    this.process()
+    this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this));
+    this.refresh();
+    this.process();
   }
 
-  ScrollSpy.VERSION  = '3.3.7'
+  ScrollSpy.VERSION  = '3.3.7';
 
   ScrollSpy.DEFAULTS = {
     offset: 10
