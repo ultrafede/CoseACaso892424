@@ -1950,51 +1950,51 @@ if (typeof jQuery === 'undefined') {
   // ================================
 
 +function ($) {
-  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
+  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype);
 
-  Popover.prototype.constructor = Popover
+  Popover.prototype.constructor = Popover;
 
   Popover.prototype.getDefaults = function () {
-    return Popover.DEFAULTS
+    return Popover.DEFAULTS;
   }
 }
 
 +function ($) {
   Popover.prototype.setContent = function () {
-    var $tip    = this.tip()
-    var title   = this.getTitle()
-    var content = this.getContent()
+    var $tip    = this.tip();
+    var title   = this.getTitle();
+    var content = this.getContent();
 
-    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title);
     $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
-    ](content)
+    ](content);
 
-    $tip.removeClass('fade top bottom left right in')
+    $tip.removeClass('fade top bottom left right in');
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
+    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide();
   }
 }
 
 +function ($) {
   Popover.prototype.hasContent = function () {
-    return this.getTitle() || this.getContent()
+    return this.getTitle() || this.getContent();
   }
 
   Popover.prototype.getContent = function () {
-    var $e = this.$element
-    var o  = this.options
+    var $e = this.$element;
+    var o  = this.options;
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
             o.content.call($e[0]) :
-            o.content)
+            o.content);
   }
 
   Popover.prototype.arrow = function () {
-    return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
+    return (this.$arrow = this.$arrow || this.tip().find('.arrow'));
   }
 }
 
@@ -2005,11 +2005,11 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.popover')
-      var options = typeof option == 'object' && option
+      var $this   = $(this);
+      var data    = $this.data('bs.popover');
+      var options = typeof option == 'object' && option;
 
-      if (!data && /destroy|hide/.test(option)) return
+      if (!data && /destroy|hide/.test(option)) return;
       if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
