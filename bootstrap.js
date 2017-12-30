@@ -1810,76 +1810,76 @@ if (typeof jQuery === 'undefined') {
   }
 
   Tooltip.prototype.getUID = function (prefix) {
-    do prefix += ~~(Math.random() * 1000000)
+    do prefix += ~~(Math.random() * 1000000);
     while (document.getElementById(prefix))
-    return prefix
+    return prefix;
   }
 
   Tooltip.prototype.tip = function () {
     if (!this.$tip) {
-      this.$tip = $(this.options.template)
+      this.$tip = $(this.options.template);
       if (this.$tip.length != 1) {
         throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!')
       }
     }
-    return this.$tip
+    return this.$tip;
   }
 }
 
 
 +function ($) {
   Tooltip.prototype.arrow = function () {
-    return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'))
+    return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'));
   }
 
   Tooltip.prototype.enable = function () {
-    this.enabled = true
+    this.enabled = true;
   }
 
   Tooltip.prototype.disable = function () {
-    this.enabled = false
+    this.enabled = false;
   }
 
   Tooltip.prototype.toggleEnabled = function () {
-    this.enabled = !this.enabled
+    this.enabled = !this.enabled;
   }
 }
 
 +function ($) {
   Tooltip.prototype.toggle = function (e) {
-    var self = this
+    var self = this;
     if (e) {
-      self = $(e.currentTarget).data('bs.' + this.type)
+      self = $(e.currentTarget).data('bs.' + this.type);
       if (!self) {
-        self = new this.constructor(e.currentTarget, this.getDelegateOptions())
-        $(e.currentTarget).data('bs.' + this.type, self)
+        self = new this.constructor(e.currentTarget, this.getDelegateOptions());
+        $(e.currentTarget).data('bs.' + this.type, self);
       }
     }
 
     if (e) {
-      self.inState.click = !self.inState.click
-      if (self.isInStateTrue()) self.enter(self)
-      else self.leave(self)
+      self.inState.click = !self.inState.click;
+      if (self.isInStateTrue()) self.enter(self);
+      else self.leave(self);
     } else {
-      self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
+      self.tip().hasClass('in') ? self.leave(self) : self.enter(self);
     }
   }
 }
 
 +function ($) {
   Tooltip.prototype.destroy = function () {
-    var that = this
-    clearTimeout(this.timeout)
+    var that = this;
+    clearTimeout(this.timeout);
     this.hide(function () {
-      that.$element.off('.' + that.type).removeData('bs.' + that.type)
+      that.$element.off('.' + that.type).removeData('bs.' + that.type);
       if (that.$tip) {
-        that.$tip.detach()
+        that.$tip.detach();
       }
-      that.$tip = null
-      that.$arrow = null
-      that.$viewport = null
-      that.$element = null
-    })
+      that.$tip = null;
+      that.$arrow = null;
+      that.$viewport = null;
+      that.$element = null;
+    });
   }
 }
 
@@ -1889,28 +1889,28 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.tooltip')
-      var options = typeof option == 'object' && option
+      var $this   = $(this);
+      var data    = $this.data('bs.tooltip');
+      var options = typeof option == 'object' && option;
 
-      if (!data && /destroy|hide/.test(option)) return
-      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
+      if (!data && /destroy|hide/.test(option)) return;
+      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)));
+      if (typeof option == 'string') data[option]();
+    });
   }
 
-  var old = $.fn.tooltip
+  var old = $.fn.tooltip;
 
-  $.fn.tooltip             = Plugin
-  $.fn.tooltip.Constructor = Tooltip
+  $.fn.tooltip             = Plugin;
+  $.fn.tooltip.Constructor = Tooltip;
 
 
   // TOOLTIP NO CONFLICT
   // ===================
 
   $.fn.tooltip.noConflict = function () {
-    $.fn.tooltip = old
-    return this
+    $.fn.tooltip = old;
+    return this;
   }
 
 }(jQuery);
@@ -1931,19 +1931,19 @@ if (typeof jQuery === 'undefined') {
   // ===============================
 
   var Popover = function (element, options) {
-    this.init('popover', element, options)
+    this.init('popover', element, options);
   }
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
-  Popover.VERSION  = '3.3.7'
+  Popover.VERSION  = '3.3.7';
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-  })
+  });
 }
 
   // NOTE: POPOVER EXTENDS tooltip.js
