@@ -2126,40 +2126,40 @@ if (typeof jQuery === 'undefined') {
     }
 
     if (activeTarget && scrollTop < offsets[0]) {
-      this.activeTarget = null
-      return this.clear()
+      this.activeTarget = null;
+      return this.clear();
     }
 
     for (i = offsets.length; i--;) {
       activeTarget != targets[i]
         && scrollTop >= offsets[i]
         && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
-        && this.activate(targets[i])
+        && this.activate(targets[i]);
     }
   }
 }
 
 +function ($) {
   ScrollSpy.prototype.activate = function (target) {
-    this.activeTarget = target
+    this.activeTarget = target;
 
-    this.clear()
+    this.clear();
 
     var selector = this.selector +
       '[data-target="' + target + '"],' +
-      this.selector + '[href="' + target + '"]'
+      this.selector + '[href="' + target + '"]';
 
     var active = $(selector)
       .parents('li')
-      .addClass('active')
+      .addClass('active');
 
     if (active.parent('.dropdown-menu').length) {
       active = active
         .closest('li.dropdown')
-        .addClass('active')
+        .addClass('active');
     }
 
-    active.trigger('activate.bs.scrollspy')
+    active.trigger('activate.bs.scrollspy');
   }
 }
 
@@ -2167,7 +2167,7 @@ if (typeof jQuery === 'undefined') {
   ScrollSpy.prototype.clear = function () {
     $(this.selector)
       .parentsUntil(this.options.target, '.active')
-      .removeClass('active')
+      .removeClass('active');
   }
 }
 
@@ -2177,27 +2177,27 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   function Plugin(option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.scrollspy')
-      var options = typeof option == 'object' && option
+      var $this   = $(this);
+      var data    = $this.data('bs.scrollspy');
+      var options = typeof option == 'object' && option;
 
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
+      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)));
+      if (typeof option == 'string') data[option]();
+    });
   }
 
-  var old = $.fn.scrollspy
+  var old = $.fn.scrollspy;
 
-  $.fn.scrollspy             = Plugin
-  $.fn.scrollspy.Constructor = ScrollSpy
+  $.fn.scrollspy             = Plugin;
+  $.fn.scrollspy.Constructor = ScrollSpy;
 
 
   // SCROLLSPY NO CONFLICT
   // =====================
 
   $.fn.scrollspy.noConflict = function () {
-    $.fn.scrollspy = old
-    return this
+    $.fn.scrollspy = old;
+    return this;
   }
 }
 
@@ -2207,10 +2207,10 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   $(window).on('load.bs.scrollspy.data-api', function () {
     $('[data-spy="scroll"]').each(function () {
-      var $spy = $(this)
-      Plugin.call($spy, $spy.data())
-    })
-  })
+      var $spy = $(this);
+      Plugin.call($spy, $spy.data());
+    });
+  });
 
 }(jQuery);
 
@@ -2231,13 +2231,13 @@ if (typeof jQuery === 'undefined') {
 
   var Tab = function (element) {
     // jscs:disable requireDollarBeforejQueryAssignment
-    this.element = $(element)
+    this.element = $(element);
     // jscs:enable requireDollarBeforejQueryAssignment
   }
 
-  Tab.VERSION = '3.3.7'
+  Tab.VERSION = '3.3.7';
 
-  Tab.TRANSITION_DURATION = 150
+  Tab.TRANSITION_DURATION = 150;
 
   Tab.prototype.show = function () {
     var $this    = this.element
