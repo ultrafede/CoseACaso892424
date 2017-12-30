@@ -1700,58 +1700,58 @@ if (typeof jQuery === 'undefined') {
       callback && callback();
     }
 
-    this.$element.trigger(e)
+    this.$element.trigger(e);
 
-    if (e.isDefaultPrevented()) return
+    if (e.isDefaultPrevented()) return;
 
-    $tip.removeClass('in')
+    $tip.removeClass('in');
 
     $.support.transition && $tip.hasClass('fade') ?
       $tip
         .one('bsTransitionEnd', complete)
         .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-      complete()
+      complete();
 
-    this.hoverState = null
+    this.hoverState = null;
 
-    return this
+    return this;
   }
 }
 
 +function ($) {
   Tooltip.prototype.fixTitle = function () {
-    var $e = this.$element
+    var $e = this.$element;
     if ($e.attr('title') || typeof $e.attr('data-original-title') != 'string') {
-      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '');
     }
   }
 
   Tooltip.prototype.hasContent = function () {
-    return this.getTitle()
+    return this.getTitle();
   }
 }
 
 
 +function ($) {
   Tooltip.prototype.getPosition = function ($element) {
-    $element   = $element || this.$element
+    $element   = $element || this.$element;
 
-    var el     = $element[0]
-    var isBody = el.tagName == 'BODY'
+    var el     = $element[0];
+    var isBody = el.tagName == 'BODY';
 
-    var elRect    = el.getBoundingClientRect()
+    var elRect    = el.getBoundingClientRect();
     if (elRect.width == null) {
       // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
+      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top });
     }
-    var isSvg = window.SVGElement && el instanceof window.SVGElement
+    var isSvg = window.SVGElement && el instanceof window.SVGElement;
     // Avoid using $.offset() on SVGs since it gives incorrect results in jQuery 3.
     // See https://github.com/twbs/bootstrap/issues/20280
-    var elOffset  = isBody ? { top: 0, left: 0 } : (isSvg ? null : $element.offset())
-    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
-    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
+    var elOffset  = isBody ? { top: 0, left: 0 } : (isSvg ? null : $element.offset());
+    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() };
+    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null;
 
-    return $.extend({}, elRect, scroll, outerDims, elOffset)
+    return $.extend({}, elRect, scroll, outerDims, elOffset);
   }
 }
 
@@ -1760,7 +1760,7 @@ if (typeof jQuery === 'undefined') {
     return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
            placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
            placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
 
   }
 }
@@ -1768,45 +1768,45 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
-    var delta = { top: 0, left: 0 }
-    if (!this.$viewport) return delta
+    var delta = { top: 0, left: 0 };
+    if (!this.$viewport) return delta;
 
-    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
-    var viewportDimensions = this.getPosition(this.$viewport)
+    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0;
+    var viewportDimensions = this.getPosition(this.$viewport);
 
     if (/right|left/.test(placement)) {
-      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
+      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll;
+      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight;
       if (topEdgeOffset < viewportDimensions.top) { // top overflow
-        delta.top = viewportDimensions.top - topEdgeOffset
+        delta.top = viewportDimensions.top - topEdgeOffset;
       } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
       }
     } else {
-      var leftEdgeOffset  = pos.left - viewportPadding
-      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
+      var leftEdgeOffset  = pos.left - viewportPadding;
+      var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
       if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-        delta.left = viewportDimensions.left - leftEdgeOffset
+        delta.left = viewportDimensions.left - leftEdgeOffset;
       } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
-        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
+        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
       }
     }
 
-    return delta
+    return delta;
   }
 }
 
 
 +function ($) {
   Tooltip.prototype.getTitle = function () {
-    var title
-    var $e = this.$element
-    var o  = this.options
+    var title;
+    var $e = this.$element;
+    var o  = this.options;
 
     title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title);
 
-    return title
+    return title;
   }
 
   Tooltip.prototype.getUID = function (prefix) {
