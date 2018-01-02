@@ -142,9 +142,19 @@ public class ControllerClass {
 					stream.close();
 					
 					String strMessage ="Server File Location=" + serverFile.getAbsolutePath();
-					strMessage.replace('\n', '_').replace('\r', '_');
+					String clean = strMessage.replace('\n', '_').replace('\r', '_');
+					if (ESAPI.securityConfiguration().getLogEncodingRequired()) {
+						clean = ESAPI.encoder().encodeForHtml(clean);
+						if (!strMessage.equals(clean))
+							clean+= " (Encoded)";
+					}
+					
 					//logger.info("Server File Location=" + serverFile.getAbsolutePath());
-					logger.info(ESAPI.encoder().encodeForHTML(strMessage));
+					logger.info(clean);
+					
+					
+					
+					
 					String path = "images/parkinks/psImg_" + id + ".jpeg";
 					System.out.println("(for db) images/parkinks/psImg_" + id + ".jpeg");
 					if (service.uploadImg(id, path)) {
