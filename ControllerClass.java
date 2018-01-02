@@ -140,7 +140,9 @@ public class ControllerClass {
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(bytes);
 					stream.close();
+					
 					String strMessage ="Server File Location=" + serverFile.getAbsolutePath();
+					strMessage.replace('\n', '_').replace('\r', '_');
 					//logger.info("Server File Location=" + serverFile.getAbsolutePath());
 					logger.info(ESAPI.encoder().encodeForHTML(strMessage));
 					String path = "images/parkinks/psImg_" + id + ".jpeg";
