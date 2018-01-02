@@ -131,6 +131,7 @@ public class ControllerClass {
 			String content = file.getContentType();
 			try {
 				int id = (int) sess.getAttribute("prImgId");
+				
 				System.out.println(id+" "+content);
 				if (content.equals("image/jpeg") || content.equals("image/png")) {
 					byte[] bytes = file.getBytes();
@@ -139,7 +140,9 @@ public class ControllerClass {
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(bytes);
 					stream.close();
-					logger.info("Server File Location=" + serverFile.getAbsolutePath());
+					String strMessage ="Server File Location=" + serverFile.getAbsolutePath();
+					//logger.info("Server File Location=" + serverFile.getAbsolutePath());
+					logger.info(ESAPI.encoder().encodeForHTML(strMessage));
 					String path = "images/parkinks/psImg_" + id + ".jpeg";
 					System.out.println("(for db) images/parkinks/psImg_" + id + ".jpeg");
 					if (service.uploadImg(id, path)) {
