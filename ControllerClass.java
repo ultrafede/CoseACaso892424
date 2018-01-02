@@ -140,8 +140,8 @@ public class ControllerClass {
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(bytes);
 					stream.close();
+					
 					String strMessage ="Server File Location=" + serverFile.getAbsolutePath();
-<<<<<<< HEAD
 					String clean = strMessage.replace('\n', '_').replace('\r', '_');
 					if (ESAPI.securityConfiguration().getLogEncodingRequired()) {
 						clean = ESAPI.encoder().encodeForHtml(clean);
@@ -149,8 +149,6 @@ public class ControllerClass {
 							clean+= " (Encoded)";
 					}
 					
-=======
->>>>>>> parent of 29bca07... prova
 					//logger.info("Server File Location=" + serverFile.getAbsolutePath());
 					logger.info(clean);
 					
