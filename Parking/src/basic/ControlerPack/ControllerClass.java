@@ -3,6 +3,7 @@ package basic.ControlerPack;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.http.Cookie;
