@@ -30,9 +30,6 @@ public class Parking implements Serializable, Cloneable {
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
-	private void setId(int id) {
-		this.id = id;
-	}
 	public int getUserId() {
 		return userId;
 	}

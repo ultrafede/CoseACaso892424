@@ -117,10 +117,6 @@ public class Users implements Serializable, Cloneable
 		return id;
 	}
 
-	private void setId(int id) {
-		this.id = id;
-	}
-
 	public int getPincode() {
 		return pincode;
 	}
