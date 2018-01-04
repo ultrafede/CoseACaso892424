@@ -1,14 +1,12 @@
 package basic.Pojo;
 
 import java.io.Serializable;
-//import java.util.Arrays;
 
 public class Parking implements Serializable, Cloneable {
 
 	private int id, userId, pincode;
 	private float latitude, longitude;
 	private String area, city, state, country, image;
-//	private String [] features;   
 	
 	
 	public int getId() {
@@ -32,7 +30,7 @@ public class Parking implements Serializable, Cloneable {
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
-	public void setId(int id) {
+	private void setId(int id) {
 		this.id = id;
 	}
 	public int getUserId() {
@@ -85,7 +83,6 @@ public class Parking implements Serializable, Cloneable {
 		this.latitude = 0.0f;
 		this.longitude = 0.0f;
 		this.image = null;
-//		this.features = null;
 		this.unique = id;
 	}
 	
