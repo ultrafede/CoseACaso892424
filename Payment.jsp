@@ -1,3 +1,12 @@
+<%--
+-- Descrizione: Questa pagina contiene il form utilizzato per i pagamenti
+-- Sviluppatori: Federico Lupis, Antonino Leto, Vito Plantamura
+--
+--
+--
+--
+--%>
+
 <div class="popup-box chat-popup" id="qnimatee">
 	<div class="popup-head">
 		<div class="popup-head-left pull-left"> Payment </div>
