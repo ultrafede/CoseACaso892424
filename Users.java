@@ -197,20 +197,18 @@ public class Users implements Serializable, Cloneable
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (obj == null) 
+			{return false;}
+		if (getClass() != obj.getClass()) 
+			{return false;}
 		Users other = (Users) obj;
 		if (username == null) {
-			if (other.username != null)
-				return false;
+			if (other.username != null) 
+				{return false;}
 		} else if (!username.equals(other.username))
-			return false;
+			{return false;}
 		if ((usertype == null && other.usertype != null))
-			return false;
+			{return false;}
 		return (usertype.equals(other.usertype)); // da togliere eventualmente
 
 	}
