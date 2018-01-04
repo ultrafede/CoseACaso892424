@@ -18,8 +18,8 @@ public class Users implements Serializable, Cloneable
 	private String usertype;
 	private int id;
 	private int pincode;
-	float latitude;
-	float longitude;
+	private float latitude;
+	private float longitude;
 	
 	public Users clone() throws CloneNotSupportedException{
 		return super.clone();
