@@ -185,8 +185,9 @@ public class Users implements Serializable, Cloneable
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		int idVal=getId();
 		
-		result = prime * result + getId();		
+		result = prime * result + idVal;		
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		result = prime * result + ((usertype == null) ? 0 : usertype.hashCode());
