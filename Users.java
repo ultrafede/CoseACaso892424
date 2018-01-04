@@ -203,10 +203,6 @@ public class Users implements Serializable, Cloneable
 		if (getClass() != obj.getClass())
 			return false;
 		Users other = (Users) obj;
-		if (area == null) {
-			if (other.area != null)
-				return false;
-		} 
 		if (username == null) {
 			if (other.username != null)
 				return false;
