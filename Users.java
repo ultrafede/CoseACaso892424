@@ -5,9 +5,21 @@ import java.io.Serializable;
 //prova commento per commit
 public class Users implements Serializable, Cloneable
 {
-	private String fname, lname, gender, username, password, dob, area, state, city, country, usertype;
-	private int id, pincode;
-	float latitude, longitude;
+	private String fname;
+	private String lname;
+	private String gender;
+	private String username;
+	private String password;
+	private String dob;
+	private String area;
+	private String state;
+	private String city;
+	private String country;
+	private String usertype;
+	private int id;
+	private int pincode;
+	float latitude;
+	float longitude;
 	
 	public Users clone() throws CloneNotSupportedException{
 		return super.clone();
