@@ -209,10 +209,7 @@ public class Users implements Serializable, Cloneable
 				return false;
 		} else if (!username.equals(other.username))
 			return false;
-		if (usertype == null) {
-			if (other.usertype != null)
-				return false;
-		} else if (!usertype.equals(other.usertype))
+		if (!usertype.equals(other.usertype))
 			return false;
 		return true;
 	}
