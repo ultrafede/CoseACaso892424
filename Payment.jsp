@@ -1,7 +1,7 @@
 <%--
 -- Descrizione: Questa pagina contiene il form utilizzato per i pagamenti
 -- Sviluppatori: Federico Lupis, Antonino Leto, Vito Plantamura
---
+-- Versione 1.0
 --
 --
 --
