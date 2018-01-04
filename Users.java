@@ -9,7 +9,7 @@ public class Users implements Serializable, Cloneable
 	private int id, pincode;
 	float latitude, longitude;
 	
-	public Object clone() throws CloneNotSupportedException{
+	public Users clone() throws CloneNotSupportedException{
 		return super.clone();
 	}
 
@@ -209,7 +209,7 @@ public class Users implements Serializable, Cloneable
 				return false;
 		} else if (!username.equals(other.username))
 			return false;
-		if ((usertype == null && other.usertype != null)||(usertype != null && other.usertype == null))
+		if ((usertype == null && other.usertype != null))
 			return false;
 		return (usertype.equals(other.usertype)); // da togliere eventualmente
 
