@@ -274,7 +274,7 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.button             = Plugin;
   $.fn.button.Constructor = Button;
-}
+
 
   // BUTTON NO CONFLICT
   // ==================
@@ -283,8 +283,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.button = old;
     return this;
   }
-}
-
+}}
   // BUTTON DATA-API
   // ===============
 +function ($) {
@@ -320,7 +319,6 @@ if (typeof jQuery === 'undefined') {
 
   // CAROUSEL CLASS DEFINITION
   // =========================
-
   var Carousel = function (element, options) {
     this.$element    = $(element);
     this.$indicators = this.$element.find('.carousel-indicators');
@@ -337,7 +335,7 @@ if (typeof jQuery === 'undefined') {
       .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this));
   }
-}
+
 
 +function ($) {
   Carousel.VERSION  = '3.3.7';
@@ -350,6 +348,7 @@ if (typeof jQuery === 'undefined') {
     wrap: true,
     keyboard: true
   };
+}
 }
 
 +function ($) {
@@ -520,7 +519,7 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.carousel             = Plugin;
   $.fn.carousel.Constructor = Carousel;
-}
+
 
   // CAROUSEL NO CONFLICT
   // ====================
@@ -530,6 +529,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.carousel = old;
     return this;
   }
+}
 }
 
   // CAROUSEL DATA-API
@@ -553,9 +553,9 @@ if (typeof jQuery === 'undefined') {
 
     e.preventDefault();
   }
-}
 
-+function ($) {
+
+
   $(document)
     .on('click.bs.carousel.data-api', '[data-slide]', clickHandler)
     .on('click.bs.carousel.data-api', '[data-slide-to]', clickHandler);
@@ -773,12 +773,12 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.collapse             = Plugin;
   $.fn.collapse.Constructor = Collapse;
-}
+
 
   // COLLAPSE NO CONFLICT
   // ====================
 
-+function ($) {
+
   $.fn.collapse.noConflict = function () {
     $.fn.collapse = old;
     return this;
@@ -812,20 +812,7 @@ if (typeof jQuery === 'undefined') {
  * ======================================================================== */
 
 
-+function ($) {
-  'use strict';
 
-  // DROPDOWN CLASS DEFINITION
-  // =========================
-
-  var backdrop = '.dropdown-backdrop';
-  var toggle   = '[data-toggle="dropdown"]';
-  var Dropdown = function (element) {
-    $(element).on('click.bs.dropdown', this.toggle);
-  }
-
-  Dropdown.VERSION = '3.3.7';
-}
 
 +function ($) {
   function getParent($this) {
@@ -841,8 +828,22 @@ if (typeof jQuery === 'undefined') {
     return $parent && $parent.length ? $parent : $this.parent();
   }
 }
-
 +function ($) {
+	  'use strict';
+
+	  // DROPDOWN CLASS DEFINITION
+	  // =========================
+
+	  var backdrop = '.dropdown-backdrop';
+	  var toggle   = '[data-toggle="dropdown"]';
+	  var Dropdown = function (element) {
+	    $(element).on('click.bs.dropdown', this.toggle);
+	  }
+
+	  Dropdown.VERSION = '3.3.7';
+	
+
+
   function clearMenus(e) {
     if (e && e.which === 3) return;
     $(backdrop).remove();
@@ -958,13 +959,12 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.dropdown             = Plugin;
   $.fn.dropdown.Constructor = Dropdown;
-}
+
 
   // DROPDOWN NO CONFLICT
   // ====================
 
-+function ($) {
-  $.fn.dropdown.noConflict = function () {
+ $.fn.dropdown.noConflict = function () {
     $.fn.dropdown = old;
     return this;
   }
@@ -1017,9 +1017,9 @@ if (typeof jQuery === 'undefined') {
         }, this));
     }
   }
-}
 
-+function ($) {
+
+
   Modal.VERSION  = '3.3.7';
 
   Modal.TRANSITION_DURATION = 300;
@@ -1316,12 +1316,12 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.modal             = Plugin;
   $.fn.modal.Constructor = Modal;
-}
+
 
   // MODAL NO CONFLICT
   // =================
 
-+function ($) {
+
   $.fn.modal.noConflict = function () {
     $.fn.modal = old;
     return this;
