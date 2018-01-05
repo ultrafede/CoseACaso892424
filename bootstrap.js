@@ -56,7 +56,7 @@ if (typeof jQuery === 'undefined') {
     var called = false;
     var $el = this;
     $(this).one('bsTransitionEnd', function () { called = true; });
-    var callback = function () { if (!called) $($el).trigger($.support.transition.end); };
+    var callback = function () { if (!called) {$($el).trigger($.support.transition.end);} };
     setTimeout(callback, duration);
     return this;
   }
@@ -64,13 +64,13 @@ if (typeof jQuery === 'undefined') {
   $(function () {
     $.support.transition = transitionEnd();
 
-    if (!$.support.transition) return;
+    if (!$.support.transition) {return;}
 
     $.event.special.bsTransitionEnd = {
       bindType: $.support.transition.end,
       delegateType: $.support.transition.end,
       handle: function (e) {
-        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments);
+        if ($(e.target).is(this)) {return e.handleObj.handler.apply(this, arguments);}
       }
     };
   });
@@ -112,7 +112,7 @@ if (typeof jQuery === 'undefined') {
 
     var $parent = $(selector === '#' ? [] : selector);
 
-    if (e) e.preventDefault();
+    if (e) {e.preventDefault();}
 
     if (!$parent.length) {
       $parent = $this.closest('.alert');
@@ -870,7 +870,7 @@ if (typeof jQuery === 'undefined') {
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this);
 
-    if ($this.is('.disabled, :disabled')) return;
+    if ($this.is('.disabled, :disabled')) {return;}
 
     var $parent  = getParent($this);
     var isActive = $parent.hasClass('open');
@@ -889,7 +889,7 @@ if (typeof jQuery === 'undefined') {
       var relatedTarget = { relatedTarget: this };
       $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget));
 
-      if (e.isDefaultPrevented()) return;
+      if (e.isDefaultPrevented()) {return;}
 
       $this
         .trigger('focus')
@@ -906,14 +906,14 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return;
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) {return;}
 
     var $this = $(this);
 
     e.preventDefault();
     e.stopPropagation();
 
-    if ($this.is('.disabled, :disabled')) return;
+    if ($this.is('.disabled, :disabled')) {return;}
 
     var $parent  = getParent($this);
     var isActive = $parent.hasClass('open');
@@ -1938,7 +1938,7 @@ if (typeof jQuery === 'undefined') {
     this.init('popover', element, options);
   }
 
-  if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
+  if (!$.fn.tooltip) {throw new Error('Popover requires tooltip.js');}
 
   Popover.VERSION  = '3.3.7';
 
@@ -1978,7 +1978,7 @@ if (typeof jQuery === 'undefined') {
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide();
+    if (!$tip.find('.popover-title').html()) {$tip.find('.popover-title').hide();}
   }
 }
 
@@ -2013,9 +2013,9 @@ if (typeof jQuery === 'undefined') {
       var data    = $this.data('bs.popover');
       var options = typeof option == 'object' && option;
 
-      if (!data && /destroy|hide/.test(option)) return;
-      if (!data) $this.data('bs.popover', (data = new Popover(this, options)));
-      if (typeof option == 'string') data[option]();
+      if (!data && /destroy|hide/.test(option)) {return;}
+      if (!data) {$this.data('bs.popover', (data = new Popover(this, options)));}
+      if (typeof option == 'string') {data[option]();}
     });
   }
 
@@ -2185,8 +2185,8 @@ if (typeof jQuery === 'undefined') {
       var data    = $this.data('bs.scrollspy');
       var options = typeof option == 'object' && option;
 
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)));
-      if (typeof option == 'string') data[option]();
+      if (!data) {$this.data('bs.scrollspy', (data = new ScrollSpy(this, options)));}
+      if (typeof option == 'string') {data[option]();}
     });
   }
 
@@ -2253,7 +2253,7 @@ if (typeof jQuery === 'undefined') {
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, ''); // strip for ie7
     }
 
-    if ($this.parent('li').hasClass('active')) return;
+    if ($this.parent('li').hasClass('active')) {return;}
 
     var $previous = $ul.find('.active:last a');
     var hideEvent = $.Event('hide.bs.tab', {
@@ -2266,7 +2266,7 @@ if (typeof jQuery === 'undefined') {
     $previous.trigger(hideEvent);
     $this.trigger(showEvent);
 
-    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return;
+    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) {return;}
 
     var $target = $(selector);
 
