@@ -226,4 +226,19 @@ public class Users implements Serializable, Cloneable
 
 	}
 	
+	private void writeObject(java.io.ObjectOutputStream stream) throws IOException {
+		stream.writeObject(fname);
+		stream.writeObject(lname);
+		stream.writeObject(gender);
+		stream.writeObject(dob);
+		stream.writeObject(area);
+		stream.writeObject(state);
+		stream.writeObject(city);
+		stream.writeObject(country);
+		stream.writeObject(usertype);
+		stream.writeObject(pincode);
+		stream.writeObject(latitude);
+		stream.writeObject(longitude);
+	}
+	
 }
