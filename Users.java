@@ -26,7 +26,7 @@ public class Users implements Serializable, Cloneable
 	private float latitude;
 	private float longitude;
 	
-	public Users clone() throws CloneNotSupportedException{
+	public final Users clone() throws CloneNotSupportedException{
 		return super.clone();
 	}
 

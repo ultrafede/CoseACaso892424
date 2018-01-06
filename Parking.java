@@ -109,7 +109,7 @@ public class Parking implements Serializable, Cloneable {
 				+ longitude + ", image=" + image  + "]";
 	}
 
-	public Object clone() throws CloneNotSupportedException{
+	public final Object clone() throws CloneNotSupportedException{
 		return super.clone();
 	}
 	@Override
