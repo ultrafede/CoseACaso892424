@@ -222,7 +222,7 @@ Prism.languages.markup = {
 	doctype : /&lt;!DOCTYPE.+?>/,
 	cdata : /&lt;!\[CDATA\[[\w\W]*?]]>/i,
 	tag : {
-		pattern : /&lt;\/?[\w*:-]+\s*(?:\s*+[\w*:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?>/gi,
+		pattern : /<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i,
 		inside : {
 			tag : {
 				pattern : /^&lt;\/?[\w:-]+/i,
