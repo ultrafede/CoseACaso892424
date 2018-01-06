@@ -235,6 +235,7 @@ public class Users implements Serializable, Cloneable
 		stream.writeObject(pincode);
 		stream.writeObject(latitude);
 		stream.writeObject(longitude);
+		stream.close();
 	}
 	
 }

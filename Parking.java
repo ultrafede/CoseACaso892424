@@ -109,9 +109,6 @@ public class Parking implements Serializable, Cloneable {
 				+ longitude + ", image=" + image  + "]";
 	}
 
-	public final Object clone() throws CloneNotSupportedException{
-		return super.clone();
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -147,6 +144,18 @@ public class Parking implements Serializable, Cloneable {
 		if (userId != other.userId)
 			return false;
 		return true;
+	}
+	
+	final private void writeObject(java.io.ObjectOutputStream stream) throws IOException {
+		stream.writeObject(latitude);
+		stream.writeObject(longitude);
+		stream.writeObject(area);
+		stream.writeObject(state);
+		stream.writeObject(city);
+		stream.writeObject(country);
+		stream.writeObject(image);
+		stream.close();
+		
 	}
 	
 	
