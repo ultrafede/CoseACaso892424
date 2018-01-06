@@ -25,10 +25,6 @@ public class Users implements Serializable, Cloneable
 	private int pincode;
 	private float latitude;
 	private float longitude;
-	
-	public final Users clone() throws CloneNotSupportedException{
-		return super.clone();
-	}
 
 	public String getFname() {
 		return fname;
@@ -226,7 +222,7 @@ public class Users implements Serializable, Cloneable
 
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream stream) throws IOException {
+	final private void writeObject(java.io.ObjectOutputStream stream) throws IOException {
 		stream.writeObject(fname);
 		stream.writeObject(lname);
 		stream.writeObject(gender);
