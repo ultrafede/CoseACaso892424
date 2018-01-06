@@ -175,10 +175,11 @@
 	n.stringify = function(e, r, i) {
 		if (typeof e == "string")
 			return e;
-		if (Object.prototype.toString.call(e) == "[object Array]")
+		if (Object.prototype.toString.call(e) == "[object Array]"){
 			return e.map(function(t) {
 				return n.stringify(t, r, e);
 			}).join("");
+		}
 		var s = {
 			type : e.type,
 			content : n.stringify(e.content, r, i),
