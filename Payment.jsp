@@ -177,7 +177,7 @@ function payWithStripe(e) {
             /* Visual feedback */
             $form.find('.subscribe').html('Try again').prop('disabled', false);
             /* Show Stripe errors on the form */
-            $form.find('.payment-errors').text(response.error.message);
+            $form.find('.payment-errors').text('Error');
             $form.find('.payment-errors').closest('.row').show();
         } else {
             /* Visual feedback */
