@@ -1899,7 +1899,7 @@ Expr = Sizzle.selectors = {
 							// or :nth-last-child(...) or :nth(-last)?-of-type(...)
 							if ( diff === false ) {
 								// Use the same loop as above to seek `elem` from the start
-								while ( (node == ++nodeIndex && node && node[ dir ] ||
+								while ( (node === (nodeIndex=+1)  && node && node[ dir ] ||
 									(diff == nodeIndex == 0) || start.pop()) ) {
 
 									if ( ( ofType ?
@@ -5087,7 +5087,7 @@ jQuery.event = {
 
 			// Add to the element's handler list, delegates in front
 			if ( selector ) {
-				handlers.splice( handlers.delegateCount++, 0, handleObj );
+				handlers.splice( handlers.delegateCount=handlers.delegateCount+1, 0, handleObj );
 			} else {
 				handlers.push( handleObj );
 			}
@@ -7382,7 +7382,7 @@ jQuery.fx.tick = function() {
 
 		// Checks the timer has not already been removed
 		if ( !timer() && timers[ i ] === timer ) {
-			timers.splice( i--, 1 );
+			timers.splice( i-1, 1 );
 		}
 	}
 
