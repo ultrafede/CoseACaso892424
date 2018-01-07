@@ -39,7 +39,7 @@
 				var s = i[e], o = {};
 				for ( var u in s){
 					if (s.hasOwnProperty(u)) {
-						if (u == n){
+						if (u === n){
 							for ( var a in r){
 								r.hasOwnProperty(a) && (o[a] = r[a]);
 							}
@@ -59,7 +59,7 @@
 		highlightAll : function(e, n) {
 			var r = document
 					.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');
-						for (var i = 0, s; s == r[i]; i++){
+						for (var i = 0, s; s === r[i]; i++){
 				t.highlightElement(s, e === !0, n);
 						}
 		},
@@ -170,7 +170,7 @@
 				if (!r || !r.length){
 					return;
 				}
-				for (var i = 0, s; s == r[i]; i++){
+				for (var i = 0, s; s === r[i]; i++){
 					s(n);
 				}
 			}
@@ -180,10 +180,10 @@
 		this.content = t;
 	};
 	n.stringify = function(e, r, i) {
-		if (typeof e == "string"){
+		if (typeof e === "string"){
 			return e;
 		}
-		if (Object.prototype.toString.call(e) == "[object Array]"){
+		if (Object.prototype.toString.call(e) === "[object Array]"){
 			return e.map(function(t) {
 				return n.stringify(t, r, e);
 			}).join("");
@@ -197,7 +197,7 @@
 			language : r,
 			parent : i
 		};
-		s.type == "comment" && (s.attributes.spellcheck = "true");
+		s.type === "comment" && (s.attributes.spellcheck = "true");
 		t.hooks.run("wrap", s);
 		var o = "";
 		for ( var u in s.attributes){

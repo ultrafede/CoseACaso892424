@@ -8,10 +8,16 @@ import java.io.Serializable;
  */
 public class Parking implements Cloneable {
 
-	private int id, userId, pincode;
-	private float latitude, longitude;
-	private String area, city, state, country, image;
-	
+	private int id;
+	private int userId;
+	private int pincode;
+	private float latitude;
+	private float longitude;
+	private String area;
+	private String city;
+	private String state;
+	private String country;
+	private String image;
 	
 	public int getId() {
 		return id;
@@ -111,7 +117,7 @@ public class Parking implements Cloneable {
 				+ longitude + ", image=" + image  + "]";
 	}
 
-	public final Object clone() throws CloneNotSupportedException{
+	public final Parking clone() throws CloneNotSupportedException{
 		return super.clone();
 	}
 	@Override

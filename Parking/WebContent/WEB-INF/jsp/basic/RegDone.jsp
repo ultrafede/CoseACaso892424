@@ -1,8 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<%@ page errorPage="error.jsp" language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
 <%--
 -- Descrizione: Questa pagina contiene il form per la registrazione completata
 -- Sviluppatori: Federico Lupis, Antonino Leto, Vito Plantamura
@@ -11,6 +6,11 @@
 --
 --
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ page errorPage="error.jsp" language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -41,15 +41,15 @@
 <body>
 <jsp:include page="/mainMenu.jsp" />
 
-<div class="container fndn">
-	<div class="well row"> 
-    	<div class="text-center col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-  	 		<h1 class="text-center"> FINALLY </h1>
-         	<hr class="colorgraph">    	
+<div styleClass="container fndn">
+	<div styleClass="well row"> 
+    	<div styleClass="text-center col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+  	 		<h1 styleClass="text-center"> FINALLY </h1>
+         	<hr styleClass="colorgraph">    	
         	<form></form>      
 			<br><label><small>finally you done Registration, So you would need to clicking on Done button</small></label><br><br>
-			<a href="/Parking/home.basic" class="btn btn-success"> Done </a>
-			<hr class="colorgraph">
+			<a href="/Parking/home.basic" styleClass="btn btn-success"> Done </a>
+			<hr styleClass="colorgraph">
       	</div>
 	</div>	
 </div>

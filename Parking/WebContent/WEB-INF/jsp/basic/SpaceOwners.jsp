@@ -1,8 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<%@ page errorPage="error.jsp" language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
 <%--
 -- Descrizione: Questa pagina contiene le informazioni sul proprietario del parcheggio
 -- Sviluppatori: Federico Lupis, Antonino Leto, Vito Plantamura
@@ -11,6 +6,11 @@
 --
 --
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ page errorPage="error.jsp" language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Space Owners List</title>
@@ -21,11 +21,11 @@
 		<!-- MENU BAR -->
 		<jsp:include page="/mainMenu.jsp"></jsp:include>
 
-<div class="container-fluid">
+<div styleClass="container-fluid">
 <br><br>
-	<div class="container-fluid jumbotron myw">
-		<div class="text-center"><label style="margin-bottom: 25px;font-size: 25px;">Parking Owner</label></div>
-		<table class="w3-table w3-centered w3-hoverable w3-responsive w3-card-4">
+	<div styleClass="container-fluid jumbotron myw">
+		<div styleClass="text-center"><label style="margin-bottom: 25px;font-size: 25px;">Parking Owner</label></div>
+		<table styleClass="w3-table w3-centered w3-hoverable w3-responsive w3-card-4">
 			<thead>
 			<tr>
 				<th>First Name</th>
