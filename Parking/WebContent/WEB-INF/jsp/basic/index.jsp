@@ -30,9 +30,12 @@
 			function fillInAddress() {
 		        //Get the place details from the autocomplete object.
 				var place = autocomplete.getPlace();
+				 <!-- fixed -->
+		        DefaultHTTPUtilities utilities=new DefaultHTTPUtilities();
 		        var loc = document.getElementById('searchPlace').value;
+		        utilities.sendRedirect(url);
 		       	var lat = place.geometry.location.lat(), lng = place.geometry.location.lng();	       	
-	       		window.location = "/Parking/Check.basic?loc="+loc+"&lat=" + lat + "&lng=" + lng;
+	       		window.location = "/Parking/Check.basic?loc="+ utilities.sendRedirect(url);+"&lat=" + lat + "&lng=" + lng;
 	       	//	alert(place.geometry.location.lat()+"  "+place.geometry.location.lng());	       		
 			}
 
