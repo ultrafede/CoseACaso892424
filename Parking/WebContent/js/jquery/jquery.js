@@ -1958,9 +1958,10 @@ Expr = Sizzle.selectors = {
 						var idx,
 							matched = fn( seed, argument ),
 							i = matched.length;
-						while ( i-- ) {
+						while ( i>0 ) {
 							idx = indexOf( seed, matched[i] );
 							seed[ idx ] = !( matches[ idx ] = matched[i] );
+							i=i-1;
 						}
 					}) :
 					function( elem ) {
@@ -5113,7 +5114,7 @@ jQuery.event = {
 		// Once for each type.namespace in types; type may be omitted
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
 		t = types.length;
-		while ( t-- ) {
+		while ( t>0 ) {
 			tmp = rtypenamespace.exec( types[ t ] ) || [];
 			type = origType = tmp[ 1 ];
 			namespaces = ( tmp[ 2 ] || "" ).split( "." ).sort();
@@ -5164,6 +5165,7 @@ jQuery.event = {
 
 				delete events[ type ];
 			}
+			t=t-1;
 		}
 
 		// Remove data and the expando if it's no longer used
