@@ -44,119 +44,119 @@
 <br>
 <form action="/Parking/UserReg.basic" method="post" id="myForm" name="myForm" onsubmit="return getLocationValid()">
 	<input type="hidden" name="usertype" id="usertype" value="user" />
-<div styleClass="container register well">
-	<div styleClass="row">
-    	<div styleClass="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-			<div styleClass="text-center form">	
+<div class="container register well">
+	<div class="row">
+    	<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<div class="text-center form">	
 				<h2 >Please Sign Up <small>It's free and always will be.</small></h2>
-				<hr styleClass="colorgraph">
-				<div styleClass="row">
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-        	                <input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="fname" id="fname" styleClass="form-control input-lg" placeholder="First Name" tabindex="1" required="required" />
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+        	                <input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="fname" id="fname" class="form-control input-lg" placeholder="First Name" tabindex="1" required="required" />
 						</div>
 					</div>					
 				
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-							<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" required="required" name="lname" id="lname" styleClass="form-control input-lg" placeholder="Last Name" tabindex="2">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" required="required" name="lname" id="lname" class="form-control input-lg" placeholder="Last Name" tabindex="2">
 						</div>
 					</div>
 				</div>		
 			
-				<div styleClass="row">
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group form-inline">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group form-inline">
 							<label for="gen form-control">Gender : </label>
-							<div styleClass="form-control gen">
-								<input styleClass="radio" type="radio" id="gender" name="gender" value="Male" />
+							<div class="form-control gen">
+								<input class="radio" type="radio" id="gender" name="gender" value="Male" />
 								<label for="gender form-control">Male</label>
-								<input styleClass="radio"  type="radio" id="gender" name="gender" value="Female" />
+								<input class="radio"  type="radio" id="gender" name="gender" value="Female" />
 								<label for="gender">Female</label>
 							</div>
 						</div>
 					</div>
 			
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-							<div styleClass="input-group date" id="datetimepicker">
-            	        		<input styleClass="form-control input-lg" name="dob" id="dob" required="required" type="date" placeholder="DOB" />
-        	            		<span styleClass="input-group-addon add-on">
-	               	         		<span styleClass="glyphicon glyphicon-calendar"></span>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<div class="input-group date" id="datetimepicker">
+            	        		<input class="form-control input-lg" name="dob" id="dob" required="required" type="date" placeholder="DOB" />
+        	            		<span class="input-group-addon add-on">
+	               	         		<span class="glyphicon glyphicon-calendar"></span>
                 	    		</span>
                 			</div>
 						</div>
 					</div>
 				</div>
 			
-				<div styleClass="form-group">
-					<input type="email" name="username" required="required" id="username" styleClass="form-control input-lg" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" tabindex="4">
+				<div class="form-group">
+					<input type="email" name="username" required="required" id="username" class="form-control input-lg" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" tabindex="4">
 				</div>
-				<div styleClass="row">
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-							<input type="password" pattern="[a-zA-Z][a-zA-Z0-9\s]*{3}" name="password" required="required" id="password" styleClass="form-control input-lg" placeholder="Password" tabindex="5">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input type="password" pattern="[a-zA-Z][a-zA-Z0-9\s]*{3}" name="password" required="required" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
 						</div>
 					</div>
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-							<input type="password" pattern="[a-zA-Z][a-zA-Z0-9\s]*{3}" name="passconf" required="required" id="passconf" styleClass="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input type="password" pattern="[a-zA-Z][a-zA-Z0-9\s]*{3}" name="passconf" required="required" id="passconf" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
 						</div>
 					</div>
-				</div>
-			
-				<div styleClass="form-group">
-					<input type="text" name="area" required="required" pattern="[a-zA-Z][a-zA-Z0-9\s]*" id="area" styleClass="form-control input-lg" placeholder="Street" tabindex="4">
 				</div>
 			
-				<div styleClass="row">
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-							<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="city" id="city" required="required" styleClass="form-control input-lg" placeholder="City / District" tabindex="5">
+				<div class="form-group">
+					<input type="text" name="area" required="required" pattern="[a-zA-Z][a-zA-Z0-9\s]*" id="area" class="form-control input-lg" placeholder="Street" tabindex="4">
+				</div>
+			
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="city" id="city" required="required" class="form-control input-lg" placeholder="City / District" tabindex="5">
 						</div>
 					</div>
-					<div styleClass="col-xs-12 col-sm-6 col-md-6">
-						<div styleClass="form-group">
-						<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="state" id="state" styleClass="form-control input-lg" placeholder="State" required="required" tabindex="6">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+						<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="state" id="state" class="form-control input-lg" placeholder="State" required="required" tabindex="6">
 					</div>
 				</div>
 			</div>
 			
-			<div styleClass="row">
-				<div styleClass="col-xs-12 col-sm-6 col-md-6">
-					<div styleClass="form-group">
-						<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="country" id="country" styleClass="form-control input-lg" required="required" placeholder="Country" tabindex="5">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="text" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="country" id="country" class="form-control input-lg" required="required" placeholder="Country" tabindex="5">
 					</div>
 				</div>
-				<div styleClass="col-xs-12 col-sm-6 col-md-6">
-					<div styleClass="form-group">
-						<input type="text" pattern="[0-9]{6}" name="pincode" id="pincode" styleClass="form-control input-lg" required="required" placeholder="Pincode" tabindex="6" />
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="text" pattern="[0-9]{6}" name="pincode" id="pincode" class="form-control input-lg" required="required" placeholder="Pincode" tabindex="6" />
 						<input type="hidden" required="required" name="latitude" id="latitude" />
 						<input type="hidden" required="required" name="longitude" id="longitude" />
 					</div>
 				</div>
 			</div>
 			
-			<div styleClass="row">
-				<div styleClass="col-xs-4 col-sm-3 col-md-3">
-					<span styleClass="button-checkbox">
-						<button type="button" styleClass="btn" data-color="info" tabindex="7">I Agree</button>
-                    	<input type="checkbox" required="required" name="tac" id="tac" styleClass="hidden" value="one" />
+			<div class="row">
+				<div class="col-xs-4 col-sm-3 col-md-3">
+					<span class="button-checkbox">
+						<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+                    	<input type="checkbox" required="required" name="tac" id="tac" class="hidden" value="one" />
 					</span>
 				</div>
-				<div styleClass="col-xs-8 col-sm-9 col-md-9">
-					 By clicking <strong styleClass="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+				<div class="col-xs-8 col-sm-9 col-md-9">
+					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
 			</div>			
 
-			<hr styleClass="colorgraph">
+			<hr class="colorgraph">
 
-			<div styleClass="row">
-				<div styleClass="col-xs-12 col-md-6">
-					<button id="Register" type="submit" styleClass="btn btn-primary btn-block btn-lg"> Register </button>
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<button id="Register" type="submit" class="btn btn-primary btn-block btn-lg"> Register </button>
 				</div>
-				<div styleClass="col-xs-12 col-md-6">
-					<a href="/Parking/LoginPage.basic" styleClass="btn btn-success btn-block btn-lg"> Sign In </a>
+				<div class="col-xs-12 col-md-6">
+					<a href="/Parking/LoginPage.basic" class="btn btn-success btn-block btn-lg"> Sign In </a>
 				</div>
 			</div>
     		</div>
@@ -164,14 +164,14 @@
 	</div>
 
 	<!-- Modal -->
-	<div styleClass="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div styleClass="modal-dialog modal-lg">
-			<div styleClass="modal-content">
-				<div styleClass="modal-header">
-					<button type="button" styleClass="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 styleClass="modal-title" id="myModalLabel">Terms & Conditions</h4>
+	<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
 				</div>
-				<div styleClass="modal-body">
+				<div class="modal-body">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
@@ -180,8 +180,8 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				</div>
-				<div styleClass="modal-footer">
-					<button type="button" styleClass="btn btn-primary" data-dismiss="modal">I Agree</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->

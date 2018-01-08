@@ -41,15 +41,15 @@
 <body>
 <jsp:include page="/mainMenu.jsp" />
 
-<div styleClass="container fndn">
-	<div styleClass="well row"> 
-    	<div styleClass="text-center col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-  	 		<h1 styleClass="text-center"> FINALLY </h1>
-         	<hr styleClass="colorgraph">    	
+<div class="container fndn">
+	<div class="well row"> 
+    	<div class="text-center col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+  	 		<h1 class="text-center"> FINALLY </h1>
+         	<hr class="colorgraph">    	
         	<form></form>      
 			<br><label><small>finally you done Registration, So you would need to clicking on Done button</small></label><br><br>
-			<a href="/Parking/home.basic" styleClass="btn btn-success"> Done </a>
-			<hr styleClass="colorgraph">
+			<a href="/Parking/home.basic" class="btn btn-success"> Done </a>
+			<hr class="colorgraph">
       	</div>
 	</div>	
 </div>

@@ -14,7 +14,7 @@
 ( function( global, factory ) {
 
 	"use strict";
-//PROVA
+
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
@@ -291,7 +291,12 @@ jQuery.extend( {
 		// strings and numbers (primitives or objects)
 		// that can be coerced to finite numbers (gh-2662)
 		var type = jQuery.type( obj );
-		return (  type === " number "  ||  type === " string " ) && !(isNaN( obj  -  parseFloat( obj ) ));
+		return ( type === "number" || type === "string" ) &&
+
+			// parseFloat NaNs numeric-cast false positives ("")
+			// ...but misinterprets leading-number strings, particularly hex literals ("0x...")
+			// subtraction forces infinities to NaN
+			!isNaN( obj - parseFloat( obj ) );
 	},
 
 	isPlainObject: function( obj ) {
@@ -1039,8 +1044,8 @@ function createDisabledPseudo( disabled ) {
 
 					// Where there is no isDisabled, check manually
 					/* jshint -W018 */
-					elem.isDisabled !== !disabled && 
-						 disabledAncestor(  elem  )  === disabled ;
+					elem.isDisabled !== !disabled &&
+						disabledAncestor( elem ) === disabled;
 			}
 
 			return elem.disabled === disabled;
@@ -1395,10 +1400,10 @@ setDocument = Sizzle.setDocument = function( node ) {
 			var adown = a.nodeType === 9 ? a.documentElement : a,
 				bup = b && b.parentNode;
 			return a === bup || !!( bup && bup.nodeType === 1 && (
-				if  ( adown.contains ) 
-					{ adown.contains( bup ) } else {
-					a.compareDocumentPosition && a.compareDocumentPosition( bup ) & 16 
-					}));
+				adown.contains ?
+					adown.contains( bup ) :
+					a.compareDocumentPosition && a.compareDocumentPosition( bup ) & 16
+			));
 		} :
 		function( a, b ) {
 			if ( b ) {
@@ -1536,7 +1541,10 @@ Sizzle.matchesSelector = function( elem, expr ) {
 			var ret = matches.call( elem, expr );
 
 			// IE 9's matchesSelector returns false on disconnected nodes
-			if ( ret || support.disconnectedMatch || elem.document && elem.document.nodeType !== 11 ) {
+			if ( ret || support.disconnectedMatch ||
+					// As well, disconnected nodes are said to be in a document
+					// fragment in IE 9
+					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
 		} catch (e) {}
@@ -1732,8 +1740,12 @@ Expr = Sizzle.selectors = {
 				match[2] = match[4] || match[5] || "";
 
 			// Strip excess characters from unquoted arguments
-			} else if ( unquoted && rpseudo.test( unquoted ) && (excess === tokenize( unquoted, true ) ) && (excess === unquoted.indexOf( ")", unquoted.length - excess ) - unquoted.length ) )
-			{
+			} else if ( unquoted && rpseudo.test( unquoted ) &&
+				// Get excess from tokenize (recursively)
+				(excess === tokenize( unquoted, true )) &&
+				// advance to the next closing parenthesis
+				(excess === unquoted.indexOf( ")", unquoted.length - excess ) - unquoted.length) ) {
+
 				// excess is a negative index
 				match[0] = match[0].slice( 0, excess );
 				match[2] = unquoted.slice( 0, excess );
@@ -1852,11 +1864,14 @@ Expr = Sizzle.selectors = {
 
 							i = nodeIndex;
 							i = i + 1;
-							while ( (node === i && node && node[ dir ] || (diff === nodeIndex === 0) || start.pop()) ) {
+							while ( (node === i && node && node[ dir ] ||
+
+								// Fallback to seeking `elem` from the start
+								(diff === nodeIndex === 0) || start.pop()) ) {
 
 								i = i + 1;
 								// When found, cache indexes on `parent` and break
-								diff = diff + 1;
+								diff=diff+1;
 								if ( node.nodeType === 1 && diff && node === elem ) {
 									uniqueCache[ type ] = [ dirruns, nodeIndex, diff ];
 									break;
@@ -1975,11 +1990,10 @@ Expr = Sizzle.selectors = {
 						i = seed.length;
 
 					// Match elements unmatched by `matcher`
-					while ( i > 0 ) {
+					while ( i-- ) {
 						if ( (elem === unmatched[i]) ) {
 							seed[i] = !(matches[i] = elem);
 						}
-						i = i - 1 ;
 					}
 				}) :
 				function( elem, context, xml ) {
@@ -2102,11 +2116,13 @@ Expr = Sizzle.selectors = {
 		"text": function( elem ) {
 			var attr;
 			return elem.nodeName.toLowerCase() === "input" &&
-				elem.type === "text"  &&  ( (attr = elem.getAttribute("type")) === null || attr.toLowerCase() === "text" );
-			
+				elem.type === "text" &&
+
+				// Support: IE<8
+				// New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
+				( (attr = elem.getAttribute("type")) === null || attr.toLowerCase() === "text" );
 		},
 
-		
 		// Position-in-collection
 		"first": createPositionalPseudo(function() {
 			return [ 0 ];
@@ -2452,22 +2468,20 @@ function matcherFromTokens( tokens ) {
 		len = tokens.length,
 		leadingRelative = Expr.relative[ tokens[0].type ],
 		implicitRelative = leadingRelative || Expr.relative[" "],
-		 if(leadingRelative)
-			 { i= 1
-			 } else{ i =0}
+		i = leadingRelative ? 1 : 0,
 
 		// The foundational matcher ensures that elements are reachable from top-level context(s)
 		matchContext = addCombinator( function( elem ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
 		matchAnyContext = addCombinator( function( elem ) {
-			return indexOf( checkContext, elem ) > - 1;
+			return indexOf( checkContext, elem ) > -1;
 		}, implicitRelative, true ),
 		matchers = [ function( elem, context, xml ) {
-			var ret = ( ! ( leadingRelative ) && ( xml  ||  context !== outermostContext ) ) || (if ((checkContext === context).nodeType ) {
-					matchContext( elem, context, xml )
-					} else{
-					matchAnyContext( elem, context, xml )} );
+			var ret = ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
+				(checkContext === context).nodeType ?
+					matchContext( elem, context, xml ) :
+					matchAnyContext( elem, context, xml ) );
 			// Avoid hanging onto element (issue #299)
 			checkContext = null;
 			return ret;
@@ -2482,7 +2496,7 @@ function matcherFromTokens( tokens ) {
 			// Return special upon seeing a positional matcher
 			if ( matcher[ expando ] ) {
 				// Find the next relative operator (if any) for proper handling
-				j = i + 1;
+				j =i+1;
 				for ( ; j < len; j++ ) {
 					if ( Expr.relative[ tokens[j].type ] ) {
 						break;
@@ -3586,7 +3600,9 @@ jQuery.extend( {
 										// Support: Promises/A+ section 2.3.4
 										// https://promisesaplus.com/#point-64
 										// Only check objects and functions for thenability
-										( typeof returned === "object"  ||  typeof returned === "function" )  &&  returned.then;
+										( typeof returned === "object" ||
+											typeof returned === "function" ) &&
+										returned.then;
 
 									// Handle a returned thenable
 									if ( jQuery.isFunction( then ) ) {
@@ -4496,13 +4512,15 @@ var isHiddenWithinTree = function( elem, el ) {
 
 		// Inline style trumps all
 		return elem.style.display === "none" ||
-			elem.style.display === "" &&  jQuery.contains( elem.ownerDocument, elem )  &&  jQuery.css( elem, "display" ) === "none";
+			elem.style.display === "" &&
 
 			// Otherwise, check computed style
 			// Support: Firefox <=43 - 45
 			// Disconnected elements can have computed display: none, so first confirm that elem is
 			// in the document.
-			
+			jQuery.contains( elem.ownerDocument, elem ) &&
+
+			jQuery.css( elem, "display" ) === "none";
 	};
 
 var swap = function( elem, options, callback, args ) {
@@ -5117,7 +5135,7 @@ jQuery.event = {
 
 			// Remove matching events
 			origCount = j = handlers.length;
-			while ( j > 0) {
+			while ( j-- ) {
 				handleObj = handlers[ j ];
 
 				if ( ( mappedTypes || origType === handleObj.origType ) &&
@@ -5134,7 +5152,6 @@ jQuery.event = {
 						special.remove.call( elem, handleObj );
 					}
 				}
-				J = j - 1;
 			}
 
 			// Remove generic event handler if we removed something and no more handlers exist
@@ -5228,18 +5245,18 @@ jQuery.event = {
 			cur = event.target;
 
 		// Find delegate handlers
-		if ( delegateCount  &&  cur.nodeType  &&  !( event.type === "click" && event.button >= 1 ) ) {}
+		if ( delegateCount &&
 
 			// Support: IE <=9
 			// Black-hole SVG <use> instance trees (trac-13180)
-	
+			cur.nodeType &&
 
 			// Support: Firefox <=42
 			// Suppress spec-violating clicks indicating a non-primary pointer button (trac-3861)
 			// https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click
 			// Support: IE 11 only
 			// ...but not arrow key "clicks" of radio inputs, which can have `button` -1 (gh-2343)
-
+			!( event.type === "click" && event.button >= 1 ) ) {
 
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
 
@@ -5391,12 +5408,12 @@ jQuery.Event = function( src, props ) {
 		// Events bubbling up the document may have been marked as prevented
 		// by a handler lower down the tree; reflect the correct value.
 		this.isDefaultPrevented = src.defaultPrevented ||
-				src.defaultPrevented === undefined && if(src.returnValue === false) {
-						return True } else {
-							return False};
+				src.defaultPrevented === undefined &&
 
 				// Support: Android <=2.3 only
-
+				src.returnValue === false ?
+			returnTrue :
+			returnFalse;
 
 		// Create target properties
 		// Support: Safari <=6 - 7 only
@@ -6520,11 +6537,7 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
 
 				// Certain elements can have dimension info if we invisibly show them
 				// but it must have a current display style that would benefit
-				return rdisplayswap.test( jQuery.css( elem, "display" ) ) && if( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) {
-						swap( elem, cssShow, function() {
-							return getWidthOrHeight( elem, name, extra );
-						} )} else{
-						getWidthOrHeight( elem, name, extra )};
+				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
 
 					// Support: Safari 8+
 					// Table columns in Safari have non-zero offsetWidth & zero
@@ -6532,7 +6545,11 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
 					// Support: IE <=11 only
 					// Running getBoundingClientRect on a disconnected node
 					// in IE throws an error.
-					
+					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
+						swap( elem, cssShow, function() {
+							return getWidthOrHeight( elem, name, extra );
+						} ) :
+						getWidthOrHeight( elem, name, extra );
 			}
 		},
 
@@ -8004,12 +8021,12 @@ jQuery.extend( {
 
 					// Support: IE <=9 only
 					// IE8-9 doesn't update selected after form reset (#2551)
-					if ( ( option.selected || i === index )  &&  	!option.disabled  &&  ( !option.parentNode.disabled  ||  !jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
-							
-							
+					if ( ( option.selected || i === index ) &&
 
 							// Don't return options that are disabled or in a disabled optgroup
-						
+							!option.disabled &&
+							( !option.parentNode.disabled ||
+								!jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
 
 						// Get the specific value for the option
 						value = jQuery( option ).val();

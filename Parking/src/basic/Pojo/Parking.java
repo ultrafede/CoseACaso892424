@@ -19,65 +19,143 @@ public class Parking implements Cloneable {
 	private String country;
 	private String image;
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public int getPincode() {
 		return pincode;
 	}
+	/**
+	 * 
+	 * @param pincode
+	 */
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public float getLatitude() {
 		return latitude;
 	}
+	/**
+	 * 
+	 * @param latitude
+	 */
 	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public float getLongitude() {
 		return longitude;
 	}
+	/**
+	 * 
+	 * @param longitude
+	 */
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public int getUserId() {
 		return userId;
 	}
+	/**
+	 * 
+	 * @param userId
+	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String getArea() {
 		return area;
 	}
+	/**
+	 * 
+	 * @param area
+	 */
 	public void setArea(String area) {
 		this.area = area;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCity() {
 		return city;
 	}
+	/**
+	 * 
+	 * @param city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String getState() {
 		return state;
 	}
+	/**
+	 * 
+	 * @param state
+	 */
 	public void setState(String state) {
 		this.state = state;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCountry() {
 		return country;
 	}
+	/**
+	 * 
+	 * @param country
+	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public String getImage() {
 		return image;
 	}
+	/**
+	 * 
+	 * @param image
+	 */
 	public void setImage(String image) {
 		this.image = image;
 	}
 
-	
+	/**
+	 * 
+	 */
 	public Parking() {
 		super();
 		this.id = 0;
@@ -93,7 +171,19 @@ public class Parking implements Cloneable {
 		this.unique = id;
 		this.usernq = userId;
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 * @param userId
+	 * @param pincode
+	 * @param latitude
+	 * @param longitude
+	 * @param area
+	 * @param city
+	 * @param state
+	 * @param country
+	 * @param image
+	 */
 	public Parking(int id, int userId, int pincode, float latitude, float longitude, String area, String city,
 			String state, String country, String image) {
 		super();
@@ -117,6 +207,9 @@ public class Parking implements Cloneable {
 				+ longitude + ", image=" + image  + "]";
 	}
 
+	/**
+	 * 
+	 */
 	public final Parking clone() throws CloneNotSupportedException{
 		return super.clone();
 	}
@@ -138,21 +231,23 @@ public class Parking implements Cloneable {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		
+		if (this == obj){
+			return true;}
+		if (obj == null){
+			return false;}
+		if (getClass() != obj.getClass()){
+			return false;}
 		Parking other = (Parking) obj;
 		if (area == null) {
-			if (other.area != null)
-				return false;		}
+			if (other.area != null){
+				return false;}
+			}
 		
-		if (unique != other.unique)
-			return false;		
-		if (usernq != other.usernq)
-			return false;
+		if (unique != other.unique){
+			return false;}
+		if (usernq != other.usernq){
+			return false;}
 		return true;
 	}
 	

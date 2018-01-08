@@ -48,24 +48,24 @@
 
 <jsp:include page="/mainMenu.jsp" />
 
-	<div styleClass="container psiu">
-		<div styleClass="well row">
-           	<div styleClass="text-center col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+	<div class="container psiu">
+		<div class="well row">
+           	<div class="text-center col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<h2> Upload Image <small> Please Provide Parking Space Image. </small></h2>
-				<hr styleClass="colorgraph">
-	            <form role="form" action="/Parking/imageUp.basic" method="post" styleClass="form" enctype="multipart/form-data">
-	            	<div styleClass="w3-card-4">
-	            	  	<div styleClass="form-group">
+				<hr class="colorgraph">
+	            <form role="form" action="/Parking/imageUp.basic" method="post" class="form" enctype="multipart/form-data">
+	            	<div class="w3-card-4">
+	            	  	<div class="form-group">
 		   					<label for="file">Select a file to upload</label>
-	           	        	<input styleClass="form-control" type="file" name="file" id="file" />
-	   						<p styleClass="help-block">Only jpg,jpeg,png and gif file with maximum size of 1 MB is allowed.</p>
+	           	        	<input class="form-control" type="file" name="file" id="file" />
+	   						<p class="help-block">Only jpg,jpeg,png and gif file with maximum size of 1 MB is allowed.</p>
 	   					</div>
 	            	</div>
 					<br>
-           			<input type="submit" styleClass="btn btn-lg btn-primary" value="Upload">
-					<a href="/Parking/regDone.basic" styleClass="btn btn-lg btn-success"> Skip </a>
+           			<input type="submit" class="btn btn-lg btn-primary" value="Upload">
+					<a href="/Parking/regDone.basic" class="btn btn-lg btn-success"> Skip </a>
 				</form><br>
-				<hr styleClass="colorgraph">
+				<hr class="colorgraph">
     		</div>
 		</div>
 	</div>

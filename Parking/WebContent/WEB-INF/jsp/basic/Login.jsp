@@ -45,32 +45,32 @@
 		<!-- MENU BAR -->
 		<jsp:include page="/mainMenu.jsp"></jsp:include>
 
-<div styleClass="container logPage">
+<div class="container logPage">
 
-<div styleClass="well row myw">
-    <div styleClass="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 auth-block">
-		<form name="myForm" id="myForm" styleClass="form" action="/Parking/logValid.basic" method="post" role="form">
+<div class="well row myw">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 auth-block">
+		<form name="myForm" id="myForm" class="form" action="/Parking/logValid.basic" method="post" role="form">
 			<fieldset>
 				<h2>Please Sign In</h2>
-				<hr styleClass="colorgraph">
-				<div styleClass="form-group">
-                    <input required="required" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="username" id="username" styleClass="form-control input-lg" placeholder="Email Address">
+				<hr class="colorgraph">
+				<div class="form-group">
+                    <input required="required" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="username" id="username" class="form-control input-lg" placeholder="Email Address">
 				</div>
-				<div styleClass="form-group">
-                    <input required="required" type="password" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="password" id="password" styleClass="form-control input-lg" placeholder="Password">
+				<div class="form-group">
+                    <input required="required" type="password" pattern="[a-zA-Z][a-zA-Z0-9\s]*" name="password" id="password" class="form-control input-lg" placeholder="Password">
 				</div>
-				<span styleClass="button-checkbox">
-					<button type="button" styleClass="btn" data-color="info"> Remember Me</button>
-                    <input type="checkbox" name="remember_me" id="remember_me" styleClass="hidden" >
-					<a href="" styleClass="btn btn-link pull-right">Forgot Password?</a>
+				<span class="button-checkbox">
+					<button type="button" class="btn" data-color="info"> Remember Me</button>
+                    <input type="checkbox" name="remember_me" id="remember_me" class="hidden" >
+					<a href="" class="btn btn-link pull-right">Forgot Password?</a>
 				</span>
-				<hr styleClass="colorgraph">
-				<div styleClass="row">
-					<div styleClass="col-xs-6 col-sm-6 col-md-6">
-                        <input type="submit" styleClass="btn btn-lg btn-success btn-block" value="Sign In">
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
 					</div>
-					<div styleClass="col-xs-6 col-sm-6 col-md-6">
-						<a href="/Parking/register.basic" styleClass="btn btn-lg btn-primary btn-block">Register</a>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<a href="/Parking/register.basic" class="btn btn-lg btn-primary btn-block">Register</a>
 					</div>
 				</div>
 			</fieldset>

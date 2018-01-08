@@ -8,63 +8,63 @@
 --%>
 
 
-<div styleClass="popup-box chat-popup" id="qnimatee">
-	<div styleClass="popup-head">
-		<div styleClass="popup-head-left pull-left"> Payment </div>
+<div class="popup-box chat-popup" id="qnimatee">
+	<div class="popup-head">
+		<div class="popup-head-left pull-left"> Payment </div>
 			<a id="addClass" href="#" style="font-size: 13px; margin-left: 10px;"> Back </a>
-			<div styleClass="popup-head-right pull-right">
-				<div styleClass="btn-group">
-    				<button styleClass="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
-					<i styleClass="glyphicon glyphicon-cog"></i> </button>
-					<ul role="menu" styleClass="dropdown-menu pull-right">
+			<div class="popup-head-right pull-right">
+				<div class="btn-group">
+    				<button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
+					<i class="glyphicon glyphicon-cog"></i> </button>
+					<ul role="menu" class="dropdown-menu pull-right">
 						<li><a href="#">Media</a></li>
 						<li><a href="#">Block</a></li>
 						<li><a href="#">Clear Chat</a></li>
 						<li><a href="#">Email Chat</a></li>
 					</ul>
 				</div>
-				<button data-widget="remove" id="removeClasss" styleClass="chat-header-button pull-right" type="button"><i styleClass="glyphicon glyphicon-off"></i></button>
+				<button data-widget="remove" id="removeClasss" class="chat-header-button pull-right" type="button"><i class="glyphicon glyphicon-off"></i></button>
            	</div>
 		</div>
 		
-		<div styleClass="container">
+		<div class="container">
 			            <!-- CREDIT CARD FORM STARTS HERE -->
-            <div styleClass="panel panel-default credit-card-box">
-                <div styleClass="panel-heading display-table" >
-                    <div styleClass="row display-tr" >
-                        <h3 styleClass="panel-title display-td" >Payment Details</h3>
-                        <div styleClass="display-td" >                            
-                            <img styleClass="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
                         </div>
                     </div>                    
                 </div>
-                <div styleClass="panel-body">
+                <div class="panel-body">
                     <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
-                        <div styleClass="row">
-                            <div styleClass="col-xs-12">
-                                <div styleClass="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
                                     <label for="cardNumber">CARD NUMBER</label>
-                                    <div styleClass="input-group">
+                                    <div class="input-group">
                                         <input 
                                             type="tel"
-                                            styleClass="form-control"
+                                            class="form-control"
                                             name="cardNumber"
                                             placeholder="Valid Card Number"
                                             autocomplete="cc-number"
                                             required autofocus 
                                         />
-                                        <span styleClass="input-group-addon"><i styleClass="fa fa-credit-card"></i></span>
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
                                 </div>                            
                             </div>
                         </div>
-                        <div styleClass="row">
-                            <div styleClass="col-xs-7 col-md-7">
-                                <div styleClass="form-group">
-                                    <label for="cardExpiry"><span styleClass="hidden-xs">EXPIRATION</span><span styleClass="visible-xs-inline">EXP</span> DATE</label>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
                                     <input 
                                         type="tel" 
-                                        styleClass="form-control" 
+                                        class="form-control" 
                                         name="cardExpiry"
                                         placeholder="MM / YY"
                                         autocomplete="cc-exp"
@@ -72,12 +72,12 @@
                                     />
                                 </div>
                             </div>
-                            <div styleClass="col-xs-5 col-md-5 pull-right">
-                                <div styleClass="form-group">
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
                                     <label for="cardCVC">CV CODE</label>
                                     <input 
                                         type="tel" 
-                                        styleClass="form-control"
+                                        class="form-control"
                                         name="cardCVC"
                                         placeholder="CVC"
                                         autocomplete="cc-csc"
@@ -86,22 +86,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div styleClass="row">
-                            <div styleClass="col-xs-12">
-                                <div styleClass="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
                                     <label for="couponCode">COUPON CODE</label>
-                                    <input type="text" styleClass="form-control" name="couponCode" />
+                                    <input type="text" class="form-control" name="couponCode" />
                                 </div>
                             </div>                        
                         </div>
-                        <div styleClass="row">
-                            <div styleClass="col-xs-12">
-                                <button styleClass="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
                             </div>
                         </div>
-                        <div styleClass="row" style="display:none;">
-                            <div styleClass="col-xs-12">
-                                <p styleClass="payment-errors"></p>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
                             </div>
                         </div>
                     </form>
@@ -111,13 +111,13 @@
 			
 		</div>
 
-		<div styleClass="popup-messages-footer">
+		<div class="popup-messages-footer">
 <!-- 			<textarea id="status_message" placeholder="Type a message..." rows="10" cols="40" name="message"></textarea>
- -->			<div styleClass="btn-footer">
-				<button styleClass="bg_none"><i styleClass="glyphicon glyphicon-film"></i> </button>
-				<button styleClass="bg_none"><i styleClass="glyphicon glyphicon-camera"></i> </button>
-           	 	<button styleClass="bg_none"><i styleClass="glyphicon glyphicon-paperclip"></i> </button>
-				<button styleClass="bg_none pull-right"><i styleClass="glyphicon glyphicon-thumbs-up"></i> </button>
+ -->			<div class="btn-footer">
+				<button class="bg_none"><i class="glyphicon glyphicon-film"></i> </button>
+				<button class="bg_none"><i class="glyphicon glyphicon-camera"></i> </button>
+           	 	<button class="bg_none"><i class="glyphicon glyphicon-paperclip"></i> </button>
+				<button class="bg_none pull-right"><i class="glyphicon glyphicon-thumbs-up"></i> </button>
 			</div>
 		</div>
 	</div>

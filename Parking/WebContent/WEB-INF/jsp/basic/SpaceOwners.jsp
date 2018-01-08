@@ -21,11 +21,11 @@
 		<!-- MENU BAR -->
 		<jsp:include page="/mainMenu.jsp"></jsp:include>
 
-<div styleClass="container-fluid">
+<div class="container-fluid">
 <br><br>
-	<div styleClass="container-fluid jumbotron myw">
-		<div styleClass="text-center"><label style="margin-bottom: 25px;font-size: 25px;">Parking Owner</label></div>
-		<table styleClass="w3-table w3-centered w3-hoverable w3-responsive w3-card-4">
+	<div class="container-fluid jumbotron myw">
+		<div class="text-center"><label style="margin-bottom: 25px;font-size: 25px;">Parking Owner</label></div>
+		<table class="w3-table w3-centered w3-hoverable w3-responsive w3-card-4">
 			<thead>
 			<tr>
 				<th>First Name</th>
