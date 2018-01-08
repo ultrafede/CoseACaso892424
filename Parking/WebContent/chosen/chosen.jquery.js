@@ -9,6 +9,35 @@ Repo: http://github.com/ariona/hover3d
 Issues: http://github.com/ariona/hover3d/issues
 */
 
+function move(event){
+	
+	var w      = $card.innerWidth(),
+		h      = $card.innerHeight(),
+		currentX = Math.round(event.pageX - $card.offset().left),
+		currentY = Math.round(event.pageY - $card.offset().top),
+		ax 	   = settings.invert ?  ( w / 2 - currentX)/settings.sensitivity : -( w / 2 - currentX)/settings.sensitivity,
+		ay     = settings.invert ? -( h / 2 - currentY)/settings.sensitivity :  ( h / 2 - currentY)/settings.sensitivity,
+		dx     = currentX - w / 2,
+		dy     = currentY - h / 2,
+		theta  = Math.atan2(dy, dx),
+		angle  = theta * 180 / Math.PI - 90;
+
+		
+	if (angle < 0) {
+		angle  = angle + 360;
+	}
+	
+
+	$card.css({
+		perspective    : settings.perspective+"px",
+		transformStyle : "preserve-3d",
+		transform      : "rotateY("+ax+"deg) rotateX("+ay+"deg)"
+	});
+
+	$shine.css('background', 'linear-gradient(' + angle + 'deg, rgba(255,255,255,' + event.offsetY / h * .5 + ') 0%,rgba(255,255,255,0) 80%)');
+}
+
+
 (function($){
 	
 	$.fn.hover3d = function(options){
@@ -71,33 +100,7 @@ Issues: http://github.com/ariona/hover3d/issues
 			}
 			
 			// Mouse movement Parallax effect
-			function move(event){
-				
-				var w      = $card.innerWidth(),
-					h      = $card.innerHeight(),
-					currentX = Math.round(event.pageX - $card.offset().left),
-					currentY = Math.round(event.pageY - $card.offset().top),
-					ax 	   = settings.invert ?  ( w / 2 - currentX)/settings.sensitivity : -( w / 2 - currentX)/settings.sensitivity,
-					ay     = settings.invert ? -( h / 2 - currentY)/settings.sensitivity :  ( h / 2 - currentY)/settings.sensitivity,
-					dx     = currentX - w / 2,
-					dy     = currentY - h / 2,
-					theta  = Math.atan2(dy, dx),
-					angle  = theta * 180 / Math.PI - 90;
-
-					
-				if (angle < 0) {
-					angle  = angle + 360;
-				}
-				
-
-				$card.css({
-					perspective    : settings.perspective+"px",
-					transformStyle : "preserve-3d",
-					transform      : "rotateY("+ax+"deg) rotateX("+ay+"deg)"
-				});
-
-				$shine.css('background', 'linear-gradient(' + angle + 'deg, rgba(255,255,255,' + event.offsetY / h * .5 + ') 0%,rgba(255,255,255,0) 80%)');
-			}
+			
 			
 			// Mouse leave function, will set the transform
 			// property to 0, and add transition class
@@ -135,3 +138,5 @@ Issues: http://github.com/ariona/hover3d/issues
 	};
 	
 }(jQuery));
+
+
