@@ -420,16 +420,16 @@ function results_option_build_funct(options) {
         shown_results++;
         content += data_content;
       }
-      /*
+      
       if (options != null ? options.first : void 0) {
         if (data.selected && this.is_multiple) {
           this.choice_build(data);
         } else if (data.selected && !this.is_multiple) {
           this.single_set_selected_text(this.choice_label(data));
         }
-      }*/
+      }
       
-      if {(if (options != null) {
+     /* if {(if (options != null) {
     		if (options.first){
     			if (data.selected && this.is_multiple) {
     		          this.choice_build(data);
@@ -447,6 +447,7 @@ function results_option_build_funct(options) {
     	      }
     	}
       }
+      */
       
       if (shown_results >= this.max_shown_results) {
         break;
@@ -567,10 +568,10 @@ function get_search_regex_funct(escaped_search_string) {
     
     
   //  regex_flag = this.case_sensitive_search ? "" : "i";
-    if (regex_flag = this.case_sensitive_search) {
-    	""
+    if (this.case_sensitive_search) {
+    	regex_flag = "";
     } else {
-    	"i";
+    	regex_anchor "i";
     }
     
     return new RegExp(regex_anchor + escaped_search_string, regex_flag);
