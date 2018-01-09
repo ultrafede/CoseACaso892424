@@ -202,7 +202,6 @@ function winnow_results_funct() {
           if (option.search_match && !option.group) {
             results += 1;
           }
-        }
           if (option.search_match) {
             if (searchText.length) {
               startpos = option.search_text.search(zregex);
@@ -421,16 +420,7 @@ function results_option_build_funct(options) {
         shown_results++;
         content += data_content;
       }
-      
-      if (options != null ? options.first : void 0) {
-        if (data.selected && this.is_multiple) {
-          this.choice_build(data);
-        } else if (data.selected && !this.is_multiple) {
-          this.single_set_selected_text(this.choice_label(data));
-        }
-      }
-      
-     /* if {(if (options != null) {
+      if {(if (options != null) {
     		if (options.first){
     			if (data.selected && this.is_multiple) {
     		          this.choice_build(data);
@@ -448,8 +438,7 @@ function results_option_build_funct(options) {
     	      }
     	}
       }
-      */
-      
+
       if (shown_results >= this.max_shown_results) {
         break;
       }
@@ -566,15 +555,12 @@ function get_search_regex_funct(escaped_search_string) {
     }else {
     	regex_anchor = "^";
     }
-    
-    
-  //  regex_flag = this.case_sensitive_search ? "" : "i";
-    if (this.case_sensitive_search) {
-    	regex_flag = "";
-    } else {
-    	regex_anchor "i";
+    if (this.case_sensitive_search){
+	 regex_flag = "";
+    }else {
+	 regex_flag = "i";
     }
-    
+  //  regex_flag = this.case_sensitive_search ? "" : "i";
     return new RegExp(regex_anchor + escaped_search_string, regex_flag);
   };
 
@@ -743,12 +729,7 @@ function prototype_clipboard_event_checker_funct(evt) {
 
 function prototype_keyup_checker_funct(evt) {
     var stroke, _ref;
-//    stroke = (_ref = evt.which) != null ? _ref : evt.keyCode;
-    if ((_ref = evt.which) != null) {
-    	stroke = _ref;
-    } else {
-    	stroke = evt.keyCode;
-    }
+    stroke = (_ref = evt.which) != null ? _ref : evt.keyCode;
     this.search_field_scale();
     switch (stroke) {
       case 8:
@@ -825,14 +806,7 @@ function prototype_setup_funct() {
 function prototype_set_up_html_funct() {
     var container_classes, container_props;
     container_classes = ["chosen-container"];
-  //  container_classes.push("chosen-container-" + (this.is_multiple ? "multi" : "single"));
-    
-    if (this.is_multiple){
-    	container_classes.push("chosen-container-" + "multi");
-    } else {
-    	container_classes.push("chosen-container-" + "single");
-    }
-    
+    container_classes.push("chosen-container-" + (this.is_multiple ? "multi" : "single"));
     if (this.inherit_select_classes && this.form_field.className) {
       container_classes.push(this.form_field.className);
     }
@@ -1098,13 +1072,7 @@ function result_do_highlight_funct(el) {
       high_top = this.result_highlight.position().top + this.search_results.scrollTop();
       high_bottom = high_top + this.result_highlight.outerHeight();
       if (high_bottom >= visible_bottom) {
-       // return this.search_results.scrollTop((high_bottom - maxHeight) > 0 ? high_bottom - maxHeight : 0);
-    	  
-    	  if ((high_bottom - maxheight) > 0){
-    		  return this.search_results.scrollTop(high_bottom-maxHeight);
-    	  } else {
-    		  return this.search_results_scrollTop(0);
-    	  }
+        return this.search_results.scrollTop((high_bottom - maxHeight) > 0 ? high_bottom - maxHeight : 0);
       } else if (high_top < visible_top) {
         return this.search_results.scrollTop(high_top);
       }
