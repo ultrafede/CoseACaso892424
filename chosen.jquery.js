@@ -429,10 +429,16 @@ function results_option_build_funct(options) {
         }
       }*/
       
-      if (if (options != null) {
-    		options.first
+      if {(if (options != null) {
+    		if (options.first){
+    			if (data.selected && this.is_multiple) {
+    		          this.choice_build(data);
+    		        } else if (data.selected && !this.is_multiple) {
+    		          this.single_set_selected_text(this.choice_label(data));
+    		        }
+    		}
     	} else {
-    		void 0) {
+    		if (void 0) {
     	        if (data.selected && this.is_multiple) {
     	          this.choice_build(data);
     	        } else if (data.selected && !this.is_multiple) {
@@ -440,6 +446,7 @@ function results_option_build_funct(options) {
     	        }
     	      }
     	}
+      }
       
       if (shown_results >= this.max_shown_results) {
         break;
