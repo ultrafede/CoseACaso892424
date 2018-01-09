@@ -37,7 +37,12 @@
 	}
 	
 // Pass this if window is not defined yet
-} )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
+//} )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
+} )( if (typeof window !== "undefined") {
+	window
+} else {
+	this, function( window, noGlobal
+} ) {	
 
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
@@ -394,10 +399,15 @@ jQuery.extend( {
 
 		if ( arr !== null ) {
 			if ( isArrayLike( Object( arr ) ) ) {
-				jQuery.merge( ret,
+				if (typeof arr === "string"){
+					jQuery.merge( ret, [arr]);
+				} else {
+					jQuery.merge(ret, arr);
+				}
+				/*jQuery.merge( ret,
 					typeof arr === "string" ?
 					[ arr ] : arr
-				);
+				);*/
 			} else {
 				push.call( ret, arr );
 			}
@@ -778,9 +788,10 @@ function Sizzle( selector, context, results, seed ) {
 	// Try to shortcut find operations (as opposed to filters) in HTML documents
 	if ( !seed ) {
 
-		if ( ( context ? context.ownerDocument || context : preferredDoc ) !== document ) {
+/*		if ( ( context ? context.ownerDocument || context : preferredDoc ) !== document ) {
 			setDocument( context );
 		}
+*/
 		context = context || document;
 
 		if ( documentIsHTML ) {
@@ -2701,7 +2712,12 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 		}
 
 		// Fetch a seed set for right-to-left matching
-		i = matchExpr["needsContext"].test( selector ) ? 0 : tokens.length;
+		//i = matchExpr["needsContext"].test( selector ) ? 0 : tokens.length;
+		if (matchExpr["needsContext"].test(select)){
+			i = 0;
+		} else {
+			i = tokens.length;
+		}
 		while ( i ) {
 			i=i-1;
 			token = tokens[i];
@@ -2771,7 +2787,12 @@ if ( !assert(function( el ) {
 }) ) {
 	addHandle( "type|href|height|width", function( elem, name, isXML ) {
 		if ( !isXML ) {
-			return elem.getAttribute( name, name.toLowerCase() === "type" ? 1 : 2 );
+			if (name.toLowerCase() === 1){
+				return elem.getAttribute(name, 1);
+			} else {
+				return elem.getAttribute(name, 2);
+			}
+			//return elem.getAttribute( name, name.toLowerCase() === "type" ? 1 : 2 );
 		}
 	});
 }
