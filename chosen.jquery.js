@@ -202,6 +202,7 @@ function winnow_results_funct() {
           if (option.search_match && !option.group) {
             results += 1;
           }
+        }
           if (option.search_match) {
             if (searchText.length) {
               startpos = option.search_text.search(zregex);
@@ -743,10 +744,10 @@ function prototype_clipboard_event_checker_funct(evt) {
 function prototype_keyup_checker_funct(evt) {
     var stroke, _ref;
 //    stroke = (_ref = evt.which) != null ? _ref : evt.keyCode;
-    if (stroke = (_ref = evt.which) != null) {
-    	_ref
+    if ((_ref = evt.which) != null) {
+    	stroke = _ref;
     } else {
-    	evt.keyCode;
+    	stroke = evt.keyCode;
     }
     this.search_field_scale();
     switch (stroke) {
@@ -825,11 +826,13 @@ function prototype_set_up_html_funct() {
     var container_classes, container_props;
     container_classes = ["chosen-container"];
   //  container_classes.push("chosen-container-" + (this.is_multiple ? "multi" : "single"));
-    if (container_classes.push("chosen-container-" + (this.is_multiple) {
-    	"multi"
+    
+    if (this.is_multiple){
+    	container_classes.push("chosen-container-" + "multi");
     } else {
-    	"single"));
+    	container_classes.push("chosen-container-" + "single");
     }
+    
     if (this.inherit_select_classes && this.form_field.className) {
       container_classes.push(this.form_field.className);
     }
@@ -1096,11 +1099,12 @@ function result_do_highlight_funct(el) {
       high_bottom = high_top + this.result_highlight.outerHeight();
       if (high_bottom >= visible_bottom) {
        // return this.search_results.scrollTop((high_bottom - maxHeight) > 0 ? high_bottom - maxHeight : 0);
-        if (return this.search_results.scrollTop((high_bottom - maxHeight) > 0) {
-        	high_bottom - maxHeight
-        } else {
-        	0);
-        }
+    	  
+    	  if ((high_bottom - maxheight) > 0){
+    		  return this.search_results.scrollTop(high_bottom-maxHeight);
+    	  } else {
+    		  return this.search_results_scrollTop(0);
+    	  }
       } else if (high_top < visible_top) {
         return this.search_results.scrollTop(high_top);
       }
